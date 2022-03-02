@@ -1,0 +1,23 @@
+.email-details-container .email-address{
+    color: #99a7ab;
+    font-size: 14px;
+}
+.email-details-container .email-subject,
+.email-details-container .email-sender{
+font-weight: bold;
+}
+
+.email-details-container .email-subject{
+font-size: 21px;
+}
+
+.email-details-container .contact-details{
+    margin-bottom: 7vh;
+}
+.email-details-container{
+    width: 67vw;
+    margin: auto;
+}
+
+
+

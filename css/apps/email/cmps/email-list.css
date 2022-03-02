@@ -1,9 +1,31 @@
-.email-list{
-    display: flex;
-    border: 2px solid black;
+.email-list {
+  font-size: .875rem;
+  display: flex;
+  border-bottom: 1px solid rgba(235, 222, 222, 0.863);
+  padding: 7px 0;
+  width: 980px;
+  margin: 0 auto;
 }
 
-.email-preview .preview-container{
-    display: flex;
-    justify-content: space-between;
+.email-list:first-child {
+  border-top: 1px solid rgba(235, 222, 222, 0.863);
+}
+
+.email-list:hover {
+  box-shadow: -7px 9px 15px -11px #000000;
+  cursor: pointer;
+}
+
+.email-preview .preview-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.actions{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 9vw;
+  margin-inline-end: 4px;
+  z-index: 1;
 }

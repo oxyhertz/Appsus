@@ -4,13 +4,14 @@ export default {
     props: ['emails'],
     template: `
         <section class="emails-list">
-            <ul>
-                <li v-for="email in emails" :key="email.id" class="email-list" >
-                   <email-preview :email="email" />
+            <ul >
+                <li v-for="email in emails" :key="email.id" class="email-list" :class="isRead" >
+                   <email-preview :email="email"  @click="select(email)" />
                    <div class="actions">
-                       <button @click="remove(email.id)">X</button>
-                       <button @click="select(email)">Details</button>
-                   </div>
+                   <i @click="remove(email.id)" class="fa-solid fa-trash-can"></i>
+                   <i  class="fa-solid fa-envelope-open"></i>
+                   <i class="fa-solid fa-clock"></i>
+                </div>
                 </li>
             </ul>
         </section>
@@ -23,8 +24,15 @@ export default {
             this.$emit('remove', id);
         },
         select(email) {
-            this.$emit('selected', email);
+            email.isRead = true
+            this.$router.push({
+                path:`/email/${email.id}`
+            })
         }
     },
-    computed: {}
+    computed: {
+        // isRead(){
+        //     return { 'read': this.email.isRead}
+        // }
+    }
 }

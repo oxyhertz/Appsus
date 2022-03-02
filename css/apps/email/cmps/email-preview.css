@@ -14,4 +14,9 @@
 
 .preview-star{
     align-self:center;
+    margin-inline-start: 2px;
+}
+
+.email-subjuct{
+    font-weight: bold;
 }

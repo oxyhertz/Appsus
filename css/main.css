@@ -5,8 +5,8 @@
 @import '/css/parts/base.css';
 
 /* Apps */
-@import '/apps/email/main-email.css';
-@import '/apps/notes/main-note.css';
+@import '/css/apps/email/main-email.css';
+@import '/css/apps/notes/main-note.css';
 
 /* Components */
 @import '/css/cmps/app-header.css';

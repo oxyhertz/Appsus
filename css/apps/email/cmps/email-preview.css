@@ -1,5 +1,17 @@
+.email-preview{
+    flex-grow: 1;
+}
 
+.preview-email-body{
+    flex-grow: 1;
+}
 .sender-name {
-  font-weight: bold;
-  margin-inline-end: 3vw;
+    font-weight: bold;
+    margin-inline-start: 1vw;
+    display: inline-block;
+    width: 22vw;
+}
+
+.preview-star{
+    align-self:center;
 }

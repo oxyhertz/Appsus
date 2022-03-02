@@ -3,9 +3,10 @@ export default {
   template: `
      <section class="email-preview">
          <div class="preview-container">
-           <i class="fa-solid fa-star" style="color:gold"></i>
+           <i class="fa-solid fa-star preview-star"></i>
            <div class="sender-name">{{Sender}}</div>
-           <div>{{email.subject}}  -  <div>{{email.body}}</div></div>
+           <div class="email-subjuct"> {{email.subject}} - </div>
+           <div class="preview-email-body">{{email.body}}</div>
          </div>
      </section>
     `,

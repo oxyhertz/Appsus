@@ -2,3 +2,8 @@
     display: flex;
     border: 2px solid black;
 }
+
+.email-preview .preview-container{
+    display: flex;
+    justify-content: space-between;
+}

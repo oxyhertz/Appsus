@@ -6,3 +6,8 @@
   padding: 1rem;
   gap: 1rem;
 }
+
+.note {
+  padding: 1rem;
+  border-radius: 8px;
+}

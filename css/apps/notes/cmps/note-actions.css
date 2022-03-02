@@ -1,0 +1,14 @@
+.note-actions {
+  display: flex;
+  justify-content: space-between;
+}
+.note-actions > * {
+  cursor: pointer;
+}
+.color-palette {
+}
+
+.note-actions img {
+  width: 20px;
+  height: 20px;
+}

@@ -49,6 +49,7 @@ function _createNotes() {
       {
         id: 'n102',
         type: 'noteImg',
+        isPinned: false,
         info: {
           url: 'https://res.cloudinary.com/practicaldev/image/fetch/s--wJ0gYHgm--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://thepracticaldev.s3.amazonaws.com/i/d440mmj72v2vi7ad76ir.png',
           title: 'Bobi and Me',
@@ -58,6 +59,7 @@ function _createNotes() {
       {
         id: 'n103',
         type: 'note-list',
+        isPinned: true,
         info: {
           label: 'Get my stuff together',
           todos: [
@@ -70,8 +72,9 @@ function _createNotes() {
       {
         id: 'n104',
         type: 'noteVid',
+        isPinned: false,
         info: {
-          url: `https://www.youtube.com/embed/watch?v=DrBrj7Y6a90`,
+          url: `https://www.youtube.com/watch?v=tgbNymZ7vqY`,
         },
         bgColor: 'blue',
       },

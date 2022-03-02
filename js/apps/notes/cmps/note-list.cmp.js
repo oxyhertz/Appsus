@@ -5,11 +5,17 @@ import { eventBus } from '../../../services/eventBus-service.js';
 export default {
   props: ['note'],
   template: `
-          <section class="note note-img" >
-              <img :src="note.info.url" alt="">
-              <note-actions :note="note" @duplicateNote="duplicateNote" @removeNote="removeNote"  @togglePin="togglePin"  @updateColor="updateColor" />
-          </section>
-      `,
+        <section class="note note-list">
+            <p>{{note.info.lable}}</p>
+            <ul class="todo-list">
+                <li v-for="todo in note.info.todos" class="todo">
+                    {{todo.txt}}
+                </li>
+            </ul>
+            <note-actions :note="note" @duplicateNote="duplicateNote" @removeNote="removeNote" @togglePin="togglePin" @updateColor="updateColor"/>
+
+        </section>
+    `,
   components: {
     noteActions,
   },
@@ -24,17 +30,25 @@ export default {
   methods: {
     updateColor(color) {
       this.currNote.bgColor = color;
-      noteService.update(this.currNote);
+      console.log(color);
+      noteService
+        .update(this.currNote)
+        .then(() => {
+          eventBus.emit('updateNotes');
+        })
+        .catch(() => {
+          console.log('Color Error');
+        });
     },
     togglePin() {
       this.currNote.isPinned = !this.currNote.isPinned;
-      noteService.update(this.currNote).then(res => {
+      noteService.update(this.currNote).then(() => {
         eventBus.emit('updateNotes');
       });
     },
     removeNote() {
       const id = this.currNote.id;
-      noteService.remove(id).then(res => {
+      noteService.remove(id).then(() => {
         eventBus.emit('updateNotes');
       });
     },

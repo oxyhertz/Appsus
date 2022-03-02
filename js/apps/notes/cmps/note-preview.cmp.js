@@ -1,18 +1,19 @@
 import noteTxt from './note-text.cmp.js';
 import noteImg from './note-img.cmp.js';
-import noteVideo from './note-vid.cmp.js';
+import noteVid from './note-vid.cmp.js';
+import noteList from './note-list.cmp.js';
 
 export default {
   props: ['note'],
   template: `
-        {{note.type}}
-        <component :is="note.type" :note="note"></component>
+        <component :is="note.type" :note="note" :style="{ 'background-color': note.bgColor }"></component>
               
               `,
   components: {
     noteTxt,
     noteImg,
-    noteVideo,
+    noteVid,
+    noteList,
   },
   data() {
     return {};

@@ -46,27 +46,35 @@ function _createNotes() {
         },
         bgColor: 'yellow',
       },
-      //   {
-      //     id: 'n102',
-      //     type: 'note-img',
-      //     info: {
-      //       url: 'http://some-img/me',
-      //       title: 'Bobi and Me',
-      //     },
-      //     bgColor: 'red',
-      //   },
-      //   {
-      //     id: 'n103',
-      //     type: 'note-list',
-      //     info: {
-      //       label: 'Get my stuff together',
-      //       todos: [
-      //         { txt: 'Driving liscence', doneAt: null },
-      //         { txt: 'Coding power', doneAt: 187111111 },
-      //       ],
-      //     },
-      //     bgColor: 'blue',
-      //   },
+      {
+        id: 'n102',
+        type: 'noteImg',
+        info: {
+          url: 'https://res.cloudinary.com/practicaldev/image/fetch/s--wJ0gYHgm--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://thepracticaldev.s3.amazonaws.com/i/d440mmj72v2vi7ad76ir.png',
+          title: 'Bobi and Me',
+        },
+        bgColor: 'red',
+      },
+      {
+        id: 'n103',
+        type: 'note-list',
+        info: {
+          label: 'Get my stuff together',
+          todos: [
+            { txt: 'Driving liscence', doneAt: null },
+            { txt: 'Coding power', doneAt: 187111111 },
+          ],
+        },
+        bgColor: 'blue',
+      },
+      {
+        id: 'n104',
+        type: 'noteVid',
+        info: {
+          url: `https://www.youtube.com/embed/watch?v=DrBrj7Y6a90`,
+        },
+        bgColor: 'blue',
+      },
     ];
     utilService.saveToStorage(NOTES_KEY, notes);
   }

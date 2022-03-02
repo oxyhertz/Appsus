@@ -1,14 +1,14 @@
 export default {
   props: ['note'],
   template: `
-        <section class="note note-text" :style="{ 'background-color': note.bgColor }">
-            <p>{{note.info.txt}}</p>
+        <section class="note note-vid">
+            <iframe width="420" height="315"
+            :src="note.info.url">
+            </iframe>
         </section>
     `,
   components: {},
-  created() {
-    console.log();
-  },
+  created() {},
   data() {
     return {};
   },

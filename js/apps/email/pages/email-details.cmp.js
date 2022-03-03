@@ -6,12 +6,12 @@ export default {
   template: `
         <section v-if="email" class="email-details">
             <div class="email-details-container">
-            <p class="email-subject"> {{email.subject}} </p>
-            <p class="contact-details"> <span class="email-sender">{{sender}}</span>  <span class="email-address"><{{email.to}}></span></p>
-            <p class="email-txt"> {{email.body}} </p>
+              <p class="email-subject"> {{email.subject}} </p>
+              <p class="contact-details"> <span class="email-sender">{{sender}}</span>  <span class="email-address"><{{email.to}}></span></p>
+              <p class="email-txt"> {{email.body}} </p>
             </div>
          <router-link to="/email">Return</router-link> 
-        </section>
+       </section>
     `,
   components: {
     // longText,

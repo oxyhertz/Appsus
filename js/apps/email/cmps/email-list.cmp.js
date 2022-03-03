@@ -5,13 +5,8 @@ export default {
     template: `
         <section class="emails-list">
             <ul >
-                <li v-for="email in emails" :key="email.id" class="email-list" :class="isRead" >
+                <li v-for="email in emails" :key="email.id" class="email-list"  >
                    <email-preview :email="email"  @click="select(email)" />
-                   <div class="actions">
-                   <i @click="remove(email.id)" class="fa-solid fa-trash-can"></i>
-                   <i  class="fa-solid fa-envelope-open"></i>
-                   <i class="fa-solid fa-clock"></i>
-                </div>
                 </li>
             </ul>
         </section>
@@ -25,6 +20,8 @@ export default {
         },
         select(email) {
             email.isRead = true
+            this.$emit('save',email)
+
             this.$router.push({
                 path:`/email/${email.id}`
             })

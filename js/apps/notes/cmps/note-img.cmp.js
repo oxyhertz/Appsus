@@ -5,9 +5,10 @@ import { eventBus } from '../../../services/eventBus-service.js';
 export default {
   props: ['note'],
   template: `
-          <section class="note note-img" >
+          <section  class="note note-img" @mouseleave="hover = false" @mouseover="hover = true" >
+              <h3>{{note.title}}</h3>
               <img :src="note.info.url" alt="">
-              <note-actions :note="note" @duplicateNote="duplicateNote" @removeNote="removeNote"  @togglePin="togglePin"  @updateColor="updateColor" />
+              <note-actions v-if="hover" :note="note" @duplicateNote="duplicateNote" @removeNote="removeNote"  @togglePin="togglePin"  @updateColor="updateColor" />
           </section>
       `,
   components: {
@@ -19,6 +20,7 @@ export default {
   data() {
     return {
       currNote: null,
+      hover: false,
     };
   },
   methods: {

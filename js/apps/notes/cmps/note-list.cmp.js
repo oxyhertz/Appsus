@@ -5,17 +5,16 @@ import { eventBus } from '../../../services/eventBus-service.js';
 export default {
   props: ['note'],
   template: `
-        <section class="note note-list">
+        <section class="note note-list" @mouseleave="hover = false" @mouseover="hover = true">
             <h3>{{note.info.label}}</h3>
             <ul class="todo-list">
                 <li v-for="todo in note.info.todos" class="todo" >
-                    <!-- <p> </p> -->
                     <label :class="{'done':todo.doneAt}"  :for="todo.txt">{{todo.txt}}
                     <input  @click="done(todo)" :checked="todo.doneAt" type="checkbox" name="" :id="todo.txt">
                     </label>
                 </li>
             </ul>
-            <note-actions :note="note" @duplicateNote="duplicateNote" @removeNote="removeNote" @togglePin="togglePin" @updateColor="updateColor"/>
+            <note-actions  v-if="hover" :note="note" @duplicateNote="duplicateNote" @removeNote="removeNote" @togglePin="togglePin" @updateColor="updateColor"/>
 
         </section>
     `,
@@ -28,6 +27,7 @@ export default {
   data() {
     return {
       currNote: null,
+      hover: false,
     };
   },
   methods: {

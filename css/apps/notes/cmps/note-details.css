@@ -38,6 +38,39 @@ textarea {
   font-family: poppins;
 }
 
-.todo-input:focus {
+.todo-input:focus,
+.new-todo-input:focus {
   outline: none;
+}
+
+.add-todo-container {
+  border-bottom: 1px solid black;
+  /* border-radius: 11px; */
+}
+
+.new-todo-input {
+  border: none;
+  font-family: poppins;
+}
+
+.add-todo-btn {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+  /* font-size: 1.3em; */
+  transition: color 0.3s;
+  font-weight: bold;
+}
+
+.add-todo-btn i:hover,
+.remove-todo-btn i:hover {
+  color: white;
+}
+
+.remove-todo-btn {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  width: 25px;
 }

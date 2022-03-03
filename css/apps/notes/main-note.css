@@ -1,4 +1,5 @@
 /* CMPS */
+@import './pages/base.css';
 @import './cmps/notes-list.css';
 @import './cmps/color-pickers.css';
 @import './cmps/note-actions.css';

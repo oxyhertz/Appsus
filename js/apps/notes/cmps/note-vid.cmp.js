@@ -5,13 +5,14 @@ import { eventBus } from '../../../services/eventBus-service.js';
 export default {
   props: ['note'],
   template: `
-        <section class="note note-vid" >
+        <section class="note note-vid" @mouseleave="hover = false" @mouseover="hover = true">
+          <h3>{{note.title}}</h3>
             <div class="video-container">
                 <iframe class="responsive-iframe" 
                 :src="embedVidUrl">
                 </iframe>
             </div>
-            <note-actions :note="note" @duplicateNote="duplicateNote" @removeNote="removeNote" @togglePin="togglePin" @updateColor="updateColor"/>
+            <note-actions v-if="hover" :note="note" @duplicateNote="duplicateNote" @removeNote="removeNote" @togglePin="togglePin" @updateColor="updateColor"/>
         </section>
     `,
   components: {
@@ -23,6 +24,7 @@ export default {
   data() {
     return {
       currNote: null,
+      hover: false,
     };
   },
   methods: {

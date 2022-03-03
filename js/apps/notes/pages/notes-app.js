@@ -13,7 +13,7 @@ export default {
                   <h2 v-if="noNotes">There Are No Notes Yet</h2>
                   <h2 v-if="!pinnedNotes && !notes"></h2>
                   <h2 v-if="pinnedNotes && pinnedNotes.length">Pinned Notes</h2>
-                  <notes-list :notes="pinnedNotes" />
+                  <notes-list :notes="pinnedNotesToDisplay" />
                     <h2 v-if="pinnedNotes.length && notes.length">Other Notes</h2>
                   <notes-list @openModal="openModal" :notes="notesToDisplay" />
                   <details-modal  v-if="currNote" :is="currNote.type"  :note="currNote" @removeNote="hideModal"/>
@@ -46,6 +46,7 @@ export default {
     },
     setFilter(filterBy) {
       this.filterBy = filterBy;
+      console.log('hi');
     },
     updateNotes() {
       noteService.query().then(notes => {
@@ -67,14 +68,33 @@ export default {
       );
     },
     notesToDisplay() {
-      var currNotes;
-      noteService.query().then(notes => {
-        currNotes = notes;
-        console.log(currNotes);
-        if (!this.filterBy) return currNotes;
-        const regex = new RegExp(this.filterBy.title, 'i');
-        return currNotes.filter(note => regex.test(note.title));
-      });
+      if (!this.filterBy) return this.notes;
+      const regex = new RegExp(this.filterBy.title, 'i');
+      if (this.filterBy.type) {
+        return this.notes.filter(note => {
+          return regex.test(note.title) && note.type === this.filterBy.type;
+        });
+      } else {
+        return this.notes.filter(note => {
+          console.log(note);
+          return regex.test(note.title);
+        });
+      }
+    },
+
+    pinnedNotesToDisplay() {
+      if (!this.filterBy) return this.pinnedNotes;
+      const regex = new RegExp(this.filterBy.title, 'i');
+      if (this.filterBy.type) {
+        return this.pinnedNotes.filter(note => {
+          return regex.test(note.title) && note.type === this.filterBy.type;
+        });
+      } else {
+        return this.pinnedNotes.filter(note => {
+          console.log(note);
+          return regex.test(note.title);
+        });
+      }
     },
   },
 };

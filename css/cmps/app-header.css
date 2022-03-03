@@ -3,3 +3,39 @@
   justify-content: space-between;
   align-items: center;
 }
+
+.app-header .logo {
+  display: flex;
+  align-items: center;
+  font-family: Gugi;
+}
+
+.app-header .logo img {
+  width: 80px;
+}
+
+.nav-btn {
+  font-size: 2.5em;
+}
+
+.nav-container {
+  font-size: 2.5em;
+  position: absolute;
+  padding: 5px;
+  top: 65px;
+  right: 0;
+  transform: translateY(-350%);
+  transition: transform 0.3s;
+  display: flex;
+  gap: 20px;
+  background-color: #a6cf79;
+  border-radius: 11px;
+}
+.nav-container i:hover {
+  color: white;
+}
+
+.open-nav {
+  transform: translateY(0);
+  transition: transform 0.3s;
+}

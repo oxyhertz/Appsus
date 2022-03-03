@@ -18,4 +18,7 @@
   src: url('"https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,100&display=swap');
 }
 
-
+@font-face {
+  font-family: Gugi;
+  src: url('../fonts/Gugi-Regular.ttf');
+}

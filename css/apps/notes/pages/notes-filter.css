@@ -1,14 +1,8 @@
-.note-types-add {
+.notes-filter-container {
+  margin-top: 2em;
+  align-self: center;
   display: flex;
-  gap: 1em;
-}
-.note-types-add i {
-  font-size: 1.4em;
-}
-
-.notes-add-container {
-  display: flex;
-  gap: 5px;
+  gap: 15px;
   box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
   border: 1px solid #e0e1e0;
   border-radius: 8px;
@@ -18,12 +12,8 @@
   align-self: center;
 }
 
-.notes-add-container input {
-  border: none;
+.notes-filter-container input {
   text-align: left;
-  width: 100%;
-}
-
-.notes-add-container input:focus {
-  outline: none;
+  border: none;
+  border-bottom: 1px solid black;
 }

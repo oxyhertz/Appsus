@@ -43,3 +43,7 @@
 .isStar {
   color: gold;
 }
+
+.preview-content{
+  flex: 1;
+}

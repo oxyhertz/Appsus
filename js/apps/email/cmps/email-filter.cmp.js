@@ -6,8 +6,8 @@ export default {
             </div>
             <div>
                  <label>
-                   A-Z
-                   <input type="checkBox" name="sort" style="opacity:0" v-model="filterBy.ABC">
+                 <i class="fa-solid fa-arrow-down-a-z sort-az"></i>
+                 <input type="checkBox" name="sort" style="opacity:0" v-model="filterBy.ABC">
                  </label>
             </div>
             <div>                   

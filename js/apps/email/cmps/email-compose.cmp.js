@@ -10,10 +10,10 @@ export default {
                   <div @click="isModalOpen=false">x</div>
               </div>
                  <form >
-                    <div> 
+                    <div class="compose-inputs"> 
                      To<input type="email" placeholder="example@gmail.com" v-model="email.to" required>
                    </div>            
-                   <div> 
+                   <div class="compose-inputs"> 
                      Subject<input type="text"  v-model="email.subject">
                    </div>            
                    <div> 

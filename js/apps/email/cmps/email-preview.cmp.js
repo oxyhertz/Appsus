@@ -4,7 +4,7 @@ export default {
   props: ['email'],
   template: `
      <section class="email-preview" >
-       <div class="preview-container " :class="isReadBgc" >
+       <div class="preview-container" :class="isReadBgc" >
            <i @click.stop="star(email.id)" class="fa-solid fa-star preview-star" :class="isStar"></i>
           <div class="preview-content">
                 <div class="sender-name" :class="isRead">{{Sender}} </div>

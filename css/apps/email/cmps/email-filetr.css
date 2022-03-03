@@ -2,5 +2,12 @@
     display: flex;
     width: 980px;
     margin: 0 auto;
-    margin-left: 21vw;
+    margin-left: 16vw;
+    margin-bottom: 5vw;
 }
+
+.sort-az{
+font-size: large;
+margin-inline-start: 18px;
+}
+

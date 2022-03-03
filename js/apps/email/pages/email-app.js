@@ -11,7 +11,7 @@ export default {
               <section >
                   <email-filter @filter="setFilter" @updateEmails="getEmails"/>
                   <div class="email-app">
-                  <folder-list :count="unReadEmailsCount" @filtered="setFilter"/>
+                  <folder-list class="folder-list-main" :count="unReadEmailsCount" @filtered="setFilter"/>
                   <email-details :email="selectedEmail" />
                   <email-list :emails="emailsToShow"  @close="emailShow = null" @save="saveEmail" />
                   </div>

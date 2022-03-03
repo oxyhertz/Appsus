@@ -5,7 +5,7 @@ export default {
   template: `
      <section class="email-preview" >
        <div class="preview-container " :class="isReadBgc" >
-           <i class="fa-solid fa-star preview-star"></i>
+           <i @click.stop="star(email.id)" class="fa-solid fa-star preview-star" :class="isStar"></i>
           <div class="preview-content">
                 <div class="sender-name" :class="isRead">{{Sender}} </div>
                 <div class="email-subjuct" :class="isRead"> {{email.subject}} - </div>
@@ -26,10 +26,17 @@ export default {
   methods: {
     remove(id){
       eventBus.emit('removeEmail', id );
+    },
+    star(id){
+      eventBus.emit('starEmail', id );
     }
 
   },
   computed: {
+    isStar() {
+      if (this.email.isDeleted) return
+      if (this.email.isStarred) return 'isStar'
+    },
     isRead() {
       if (!this.email.isRead) return { read: [this.email.to, this.email.subject] }
     },

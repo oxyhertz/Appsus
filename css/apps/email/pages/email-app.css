@@ -8,17 +8,21 @@
 }
 
 .compose {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 14vw;
-  background-color: white;
-  border-radius: 21px;
-  border-color: #77889914;
-  box-shadow: -10px 5px 7px -10px #919e9d;
-  height: 40px;
-  max-width: 120px;
-  min-width: 100px;
+    justify-content: space-around;
+    align-items: center;
+    width: 14vw;
+    background-color: white;
+    border-radius: 21px;
+    border-color: #77889914;
+    box-shadow: -10px 5px 7px -10px #919e9d;
+    max-width: 120px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 32px;
+    content: '';
+    display: block;
+    height: 48px;
+    min-width: 56px;
 }
 .compose:hover {
   box-shadow: -10px 5px 7px -3px #919e9d;

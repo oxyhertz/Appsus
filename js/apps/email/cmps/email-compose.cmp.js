@@ -3,26 +3,26 @@ import { emailService } from '../services/email-service.js'
 
 export default {
   template: `
-          <section>
-              <div class="email-compose" :class="isOpen">
-                  <div class="compose-header">
-                      <div>New Massage</div>
-                       <div @click="isModalOpen=false">x</div>
-                  </div>
-                  <form >
-                  <div> 
-                        To<input type="email" placeholder="example@gmail.com" v-model="email.to" required>
-                  </div>            
-                  <div> 
-                        Subject<input type="text"  v-model="email.subjuct">
-                  </div>            
-                  <div> 
-                  <textarea v-model="" rows="10" cols="40"  v-model="email.body"></textarea>
-                  </div>     
-                  <input type="submit" @click="sendEmail(email)">
-                  </form>      
+     <section>
+         <div class="email-compose" :class="isOpen">
+             <div class="compose-header">
+                  <div>New Massage</div>
+                  <div @click="isModalOpen=false">x</div>
               </div>
-         </section>
+                 <form >
+                    <div> 
+                     To<input type="email" placeholder="example@gmail.com" v-model="email.to" required>
+                   </div>            
+                   <div> 
+                     Subject<input type="text"  v-model="email.subject">
+                   </div>            
+                   <div> 
+                   <textarea rows="10" cols="40"  v-model="email.body"></textarea>
+                   </div>     
+                   <input type="submit" @click="sendEmail(email)">
+                </form>      
+             </div> 
+    </section>
       `,
   data() {
     return {
@@ -45,7 +45,11 @@ export default {
   methods: {
       sendEmail(email){
         emailService.save(email)
-        .then(this.isModalOpen = false)
+        .then(res=> {
+          this.isModalOpen = false
+          this.$emit('updateEmails')
+        })
+        
       },
 
     openModal() {

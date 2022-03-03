@@ -8,11 +8,13 @@ import emailFilter from '../cmps/email-filter.cmp.js'
 
 export default {
   template: `
-              <section class="email-app">
-                  <!-- <email-filter /> -->
+              <section >
+                  <email-filter @filter="setFilter" @updateEmails="getEmails"/>
+                  <div class="email-app">
                   <folder-list :count="unReadEmailsCount" @filtered="setFilter"/>
                   <email-details :email="selectedEmail" />
                   <email-list :emails="emailsToShow"  @close="emailShow = null" @save="saveEmail" />
+                  </div>
                   <email-compose/>
               </section>
           
@@ -37,11 +39,17 @@ export default {
   },
   created() {
     this.unsubscribe = eventBus.on('removeEmail', this.removeEmail)
+    this.unsubscribe = eventBus.on('starEmail', this.starEmail)
     this.getEmails()
   },
   methods: {
+    starEmail(id) {
+      const currEmail = this.getEmailById(id)
+      currEmail.isStarred = !currEmail.isStarred
+      return emailService.save(currEmail).then((this.emails = [...this.emails]))
+    },
     getEmailById(id) {
-      return this.emails.find(email => email.id === id) 
+      return this.emails.find((email) => email.id === id)
     },
     emailShow(email) {
       this.selectedEmail = email
@@ -53,26 +61,31 @@ export default {
       })
     },
     removeEmail(id) {
-        const currEmail = this.getEmailById(id)
-       if (!currEmail.isDeleted){
+      const currEmail = this.getEmailById(id)
+      if (!currEmail.isDeleted) {
         currEmail.isDeleted = true
-        return emailService.save(currEmail)
-       }
-        emailService.remove(id)
+        return emailService
+          .save(currEmail)
+          .then((this.emails = [...this.emails]))
+      }
+      emailService
+        .remove(id)
         .then(() => {
           const idx = this.emails.findIndex((email) => email.id === id)
           this.emails.splice(idx, 1)
+          //   this.emails = [...this.emails]
           // eventBus.emit('show-msg', { txt: 'Deleted succesfully', type: 'success' });
         })
         .catch((err) => {
           console.error(err)
           // eventBus.emit('show-msg', { txt: 'Error - please try again later', type: 'error' });
         })
-    
-
     },
     saveEmail(email) {
-      emailService.save(email).then((email) => this.getEmails())
+      emailService.save(email).then((email) => {
+        this.getEmails()
+        //   this.emails = [...this.emails]
+      })
     },
     selectEmail(email) {
       this.selectedEmail = email
@@ -89,8 +102,11 @@ export default {
   },
   computed: {
     emailsToShow() {
-      if (!this.filterBy || this.filterBy === 'all') {
-        return this.emails.filter((email) => !email.isSent && !email.isDeleted)
+      if (
+        !this.filterBy ||
+        this.filterBy === 'all' ||
+        this.filterBy.isRead === 'All' 
+      ) {  return this.emails.filter((email) => !email.isSent && !email.isDeleted)
       }
       if (this.filterBy === 'isSent') {
         return this.emails.filter((email) => email.isSent && !email.isDeleted)
@@ -103,14 +119,36 @@ export default {
       if (this.filterBy === 'isDeleted') {
         return this.emails.filter((email) => email.isDeleted)
       }
+
+      if (this.filterBy.isRead === 'Unread' || this.filterBy.isRead === 'unread') {
+                    return this.emails.filter(
+            (email) => !email.isRead && !email.isDeleted && !email.isSent
+                    )}
+      if (this.filterBy.isRead === 'Read' || this.filterBy.isRead === 'read') {
+        return this.emails.filter(
+          (email) => email.isRead && !email.isDeleted && !email.isSent
+        )
+      }
+      if (this.filterBy.ABC) {
+        return this.emails.sort(
+          (email) => !email.isRead && !email.isDeleted && !email.isSent
+        )
+      }
+      if (this.filterBy.subject) {
+        const regex = new RegExp(this.filterBy.subject, 'i')
+        return this.emails.filter((email) => regex.test(email.subject))
+      }
+      if (!this.filterBy.subject && !this.filterBy.isRead ){  
+        return this.emails.filter((email) => !email.isSent && !email.isDeleted)
+        }
     },
   },
-//   watch : {
-//     filterBy : {
-//         handler(){
-//             this.unReadCount()
-//         },
-//         immediate : true,
-//     }
-// }
+  watch: {
+    emails: {
+      handler() {
+        // this.unReadCount()
+      },
+      immediate: true,
+    },
+  },
 }

@@ -1,35 +1,39 @@
 export default {
     template: `
-        <section class="book-filetr">
-         <form action="" type="submit">
-              <label>
-              Find Your Email:
-              <input type="text" v-model="filterBy.subject" placeholder="Search..."> 
-              </label>
-              <label>
-              From:
-              <input  type="number" min="19" v-model="filterBy.minPrice" placeholder="minimum$"> 
-              </label>
-              <label>
-              Up to:
-              <input  type="number" max="186" v-model="filterBy.maxPrice" placeholder="maximum$"> 
-              </label>
-              <button @click.prevent="setFilter">Search</button>
-         </form>
+        <section class="email-filetr">
+            <div>      
+                  <input @input="setFilter" type="text" v-model="filterBy.subject" placeholder="Search Your Email.. ">
+            </div>
+            <div>
+                 <label>
+                   A-Z
+                   <input type="checkBox" name="sort" style="opacity:0" v-model="filterBy.ABC">
+                 </label>
+            </div>
+            <div>                   
+                   <label for="email-choice">
+                        <input list="email-choice-list" id="email-choice" name="email-choice" v-model="filterBy.isRead" @change="setFilter"/>
+                            <datalist id="email-choice-list">
+                                <option value="All">
+                                <option value="Read">
+                                <option value="Unread">
+                            </datalist>
+                    </label>
+            </div>
         </section>
     `,
     data() {
         return {
             filterBy: {
-                subject: '',
-                minPrice: 0,
-                maxPrice: Infinity,
+                subject: null,
+                ABC: null,
+                isRead: null
             }
         };
     },
     methods: {
         setFilter() {
-            this.$emit('filtered', this.filterBy);
+            this.$emit('filter', this.filterBy);
         }
     }
 }

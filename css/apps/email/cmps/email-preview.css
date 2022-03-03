@@ -1,44 +1,45 @@
-.email-preview{
-    background-color: #e8edec;
-    flex-grow: 1;
+.email-preview {
+  background-color: #e8edec;
+  flex-grow: 1;
 }
 
-.preview-email-body{
-    flex-grow: 1;
+.preview-email-body {
+  flex-grow: 1;
 }
 .sender-name {
-    margin-inline-start: 1vw;
-    display: inline-block;
-    width: 22vw;
+  margin-inline-start: 1vw;
+  display: inline-block;
+  width: 22vw;
 }
 
-.preview-star{
-    align-self:center;
-    margin-inline-start: 2px;
+.preview-star {
+  align-self: center;
+  margin-inline-start: 2px;
 }
 
-.preview-container{
-    align-items: center;
+.preview-container {
+  align-items: center;
 }
 
 .email-preview .preview-container {
-    display: flex;
-    /* justify-content: space-between; */
-    height: 33px;
-  }
-  
-  .actions{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 9vw;
-    margin-inline-end: 4px;
-  }
+  display: flex;
+  /* justify-content: space-between; */
+  height: 33px;
+}
 
-  .email-preview .preview-content{
-    display: flex;
-    justify-content: space-between;
-  }
+.actions {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 9vw;
+  margin-inline-end: 4px;
+}
 
+.email-preview .preview-content {
+  display: flex;
+  justify-content: space-between;
+}
 
-
+.isStar {
+  color: gold;
+}

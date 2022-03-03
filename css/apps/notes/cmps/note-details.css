@@ -51,6 +51,7 @@ textarea {
 .new-todo-input {
   border: none;
   font-family: poppins;
+  border-radius: 0;
 }
 
 .add-todo-btn {

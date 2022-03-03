@@ -2,3 +2,5 @@
 @import './cmps/notes-list.css';
 @import './cmps/color-pickers.css';
 @import './cmps/note-actions.css';
+@import './cmps/note-vid.css';
+@import './cmps/note-details.css';

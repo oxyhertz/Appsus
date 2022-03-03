@@ -7,7 +7,7 @@ export default {
   template: `
         <section class="note note-vid" >
             <div class="video-container">
-                <iframe width="200"
+                <iframe class="responsive-iframe" 
                 :src="embedVidUrl">
                 </iframe>
             </div>

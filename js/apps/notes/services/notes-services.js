@@ -39,6 +39,7 @@ function _createNotes() {
     notes = [
       {
         id: 'n101',
+        title: '',
         type: 'noteTxt',
         isPinned: true,
         info: {
@@ -49,6 +50,7 @@ function _createNotes() {
       {
         id: 'n102',
         type: 'noteImg',
+        title: '',
         isPinned: false,
         info: {
           url: 'https://res.cloudinary.com/practicaldev/image/fetch/s--wJ0gYHgm--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://thepracticaldev.s3.amazonaws.com/i/d440mmj72v2vi7ad76ir.png',
@@ -63,14 +65,15 @@ function _createNotes() {
         info: {
           label: 'Get my stuff together',
           todos: [
-            { txt: 'Driving liscence', doneAt: null },
-            { txt: 'Coding power', doneAt: 187111111 },
+            { txt: 'Driving liscence', doneAt: null, id: 335 },
+            { txt: 'Coding power', doneAt: 187111111, id: 531 },
           ],
         },
         bgColor: 'blue',
       },
       {
         id: 'n104',
+        title: '',
         type: 'noteVid',
         isPinned: false,
         info: {

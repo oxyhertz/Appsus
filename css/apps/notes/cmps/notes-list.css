@@ -1,13 +1,21 @@
 .notes-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
   grid-auto-flow: dense;
   overflow: auto;
   padding: 1rem;
   gap: 1rem;
+  /* column-count: 5; */
+}
+
+.notes-list li {
+  /* display: flex; */
 }
 
 .note {
   padding: 1rem;
   border-radius: 8px;
+  break-inside: avoid;
+  margin-bottom: 1em;
+  /* max-width: 350px; */
 }

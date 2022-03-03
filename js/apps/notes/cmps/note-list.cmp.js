@@ -6,10 +6,13 @@ export default {
   props: ['note'],
   template: `
         <section class="note note-list">
-            <p>{{note.info.lable}}</p>
+            <h3>{{note.info.label}}</h3>
             <ul class="todo-list">
-                <li v-for="todo in note.info.todos" class="todo">
-                    {{todo.txt}}
+                <li v-for="todo in note.info.todos" class="todo" >
+                    <!-- <p> </p> -->
+                    <label :class="{'done':todo.doneAt}"  :for="todo.txt">{{todo.txt}}
+                    <input  @click="done(todo)" :checked="todo.doneAt" type="checkbox" name="" :id="todo.txt">
+                    </label>
                 </li>
             </ul>
             <note-actions :note="note" @duplicateNote="duplicateNote" @removeNote="removeNote" @togglePin="togglePin" @updateColor="updateColor"/>
@@ -28,6 +31,10 @@ export default {
     };
   },
   methods: {
+    done(todo) {
+      todo.doneAt ? (todo.doneAt = null) : (todo.doneAt = Date.now());
+      noteService.update(this.currNote);
+    },
     updateColor(color) {
       this.currNote.bgColor = color;
       console.log(color);

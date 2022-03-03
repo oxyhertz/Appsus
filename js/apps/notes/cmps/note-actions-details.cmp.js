@@ -1,4 +1,5 @@
 import colorPicker from './note-color-pick.cmp.js';
+import { eventBus } from '../../../services/eventBus-service.js';
 
 export default {
   props: ['note'],
@@ -34,7 +35,7 @@ export default {
       this.$emit('updateColor', color);
     },
     goBack() {
-      this.$router.push('/notes');
+      eventBus.emit('closeEdit');
     },
     removeNote() {
       this.$emit('removeNote');

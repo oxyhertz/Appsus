@@ -1,7 +1,7 @@
 export default {
   props: ['note'],
   template: `
-            <section class="note-img-details" >
+            <section class=" note-img-details"  :style="{'background-color': note.bgColor}">
             <input :style="{'background-color': note.bgColor}"  type="text" class="note-title-input" @input="updateNote" v-model="updatedNote.title" placeholder="Edit Title">
                 <div class="video-container">
                     <iframe class="responsive-iframe" 

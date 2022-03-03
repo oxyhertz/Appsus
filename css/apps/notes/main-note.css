@@ -1,7 +1,10 @@
 /* CMPS */
 @import './pages/base.css';
+@import './pages/notes-app-container.css';
 @import './cmps/notes-list.css';
 @import './cmps/color-pickers.css';
 @import './cmps/note-actions.css';
 @import './cmps/note-vid.css';
 @import './cmps/note-details.css';
+@import './cmps/note-add.css';
+@import './pages/modal.css';

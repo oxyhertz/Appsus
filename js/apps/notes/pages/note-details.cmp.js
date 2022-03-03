@@ -6,11 +6,12 @@ import noteVid from './note-vid-details.cmp.js';
 import noteList from './note-list-details.cmp.js';
 
 export default {
+  props: ['note'],
   template: `
         <section v-if="note" class="note-details" :style="{'background-color': note.bgColor}">
            <component :is="note.type" @updateNote="updateNote" :note="note"></component>
           <note-actions-details @updateColor="updateColor" @removeNote="removeNote" />
-          </section>
+        </section>
     `,
   components: {
     noteTxt,
@@ -20,12 +21,15 @@ export default {
     noteActionsDetails,
   },
   created() {
-    const id = this.$route.params.noteId;
-    noteService.get(id).then(note => (this.note = note));
+    // const id = this.$route.params.noteId;
+    // noteService.get(id).then(note => (this.note = note));
+    this.note = this.currNote;
+    console.log(this.note);
+    console.log('createatea');
   },
   data() {
     return {
-      note: null,
+      currNote: null,
     };
   },
   methods: {
@@ -48,12 +52,12 @@ export default {
     },
   },
   watch: {
-    noteId: {
-      handler() {
-        this.loadNote();
-      },
-      immediate: true,
-    },
+    // noteId: {
+    //   handler() {
+    //     this.loadNote();
+    //   },
+    //   immediate: true,
+    // },
   },
   computed: {
     noteId() {

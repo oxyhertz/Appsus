@@ -6,7 +6,7 @@ export default {
   props: ['note'],
   template: `
         <section class="note note-list" @mouseleave="hover = false" @mouseover="hover = true">
-            <h3>{{note.info.label}}</h3>
+            <h3>{{note.title}}</h3>
             <ul class="todo-list">
                 <li v-for="todo in note.info.todos" class="todo" >
                     <label :class="{'done':todo.doneAt}"  :for="todo.txt">{{todo.txt}}

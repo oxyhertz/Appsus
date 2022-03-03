@@ -3,7 +3,7 @@ import { utilService } from '../../../services/util-service.js';
 export default {
   props: ['note'],
   template: `
-          <section class="note-txt-details" >
+          <section class="note-txt-details" :style="{'background-color': note.bgColor}" >
               <input :style="{'background-color': note.bgColor}"  type="text" class="note-title-input" @input="updateNote" v-model="updatedNote.title" placeholder="Edit Title">
               
               <div class="add-todo-container">

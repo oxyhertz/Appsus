@@ -1,4 +1,5 @@
 import colorPicker from './note-color-pick.cmp.js';
+import { eventBus } from '../../../services/eventBus-service.js';
 
 export default {
   props: ['note'],
@@ -51,7 +52,9 @@ export default {
     },
     editNote() {
       this.$emit('editNote');
-      this.$router.push(`/notes/${this.note.id}`);
+
+      eventBus.emit('openEdit', this.note);
+      // this.$router.push(`/notes/${this.note.id}`);
     },
   },
   computed: {},

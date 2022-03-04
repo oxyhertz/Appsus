@@ -7,14 +7,14 @@ import notesFilter from '../cmps/notes-filter.cmp.js';
 export default {
   template: `
               <section class="notes-app-container">
-                  <div :class="{'overlay':currNote}" @click="currNote = null"></div>
+                  <div class="overlay" :class="{'open-overlay':currNote}" @click="currNote = null"></div>
                   <note-add />
                   <notes-filter  @filtered="setFilter" />
-                  <h2 v-if="noNotes">There Are No Notes Yet</h2>
-                  <h2 v-if="!pinnedNotes && !notes"></h2>
-                  <h2 v-if="pinnedNotes && pinnedNotes.length">Pinned Notes</h2>
+                  <p v-if="noNotes">There Are No Notes Yet</p>
+                  <p v-if="!pinnedNotes && !notes"></p>
+                  <p v-if="pinnedNotes && pinnedNotes.length">Pinned Notes</p>
                   <notes-list :notes="pinnedNotesToDisplay" />
-                    <h2 v-if="pinnedNotes.length && notes.length">Other Notes</h2>
+                    <p v-if="pinnedNotes.length && notes.length">Other Notes</p>
                   <notes-list @openModal="openModal" :notes="notesToDisplay" />
                   <details-modal  v-if="currNote" :is="currNote.type"  :note="currNote" @removeNote="hideModal"/>
                 </section>
@@ -39,16 +39,6 @@ export default {
     eventBus.on('openEdit', this.openModal);
     eventBus.on('closeEdit', this.hideModal);
     this.updateNotes();
-    if (this.$route.query.subject || this.$route.query.body) {
-      console.log(this.$route.query.subject);
-      console.log(this.$route.query.body);
-      // this.$router.push('/email');
-    }
-  },
-  watch: {
-    'this.$route'() {
-      console.log('Hoka moka');
-    },
   },
   methods: {
     hideModal() {

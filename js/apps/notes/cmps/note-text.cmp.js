@@ -8,7 +8,7 @@ export default {
         <section class="note note-text" @mouseleave="hover = false" @mouseover="hover = true" :style="{ 'background-color': note.bgColor }">
             <h3>{{note.title}}</h3>
             <p>{{note.info.txt}}</p>
-           <note-actions  v-if="hover" :note="note" @duplicateNote="duplicateNote" @removeNote="removeNote" @togglePin="togglePin"  @updateColor="updateColor" />
+           <note-actions  class="note-actions-container" :class="{'show-note-actions': hover}" :note="note" @duplicateNote="duplicateNote" @removeNote="removeNote" @togglePin="togglePin"  @updateColor="updateColor" />
           </section>
     `,
   components: {

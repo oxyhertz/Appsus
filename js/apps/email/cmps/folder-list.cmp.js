@@ -1,4 +1,4 @@
-import { eventBus } from '../../../services/eventBus-service.js'
+import { eventBus } from '../../../services/eventBus-service.js';
 
 export default {
   props: ['count'],
@@ -6,7 +6,7 @@ export default {
         <section>
             <div class="side-nav-bar">
                 <button @click="compose"class="compose"> <img src="../../../../css/imgs/compose.jpg"> <span class="compose-txt"> Compose </span></button>
-                <div :class="isInboxSelected"class="btn" @click="setFilter('all')"><i class="fa-solid fa-inbox"></i> <span class="desc">Inbox {{count}} </div>
+                <div :class="isInboxSelected" class="btn" @click="setFilter('all')"><i class="fa-solid fa-inbox"></i> <span class="desc">Inbox {{count}} </div>
                 <div :class="isStarSelected" class="btn"  @click="setFilter('isStarred')"><i class="fa-solid fa-star "></i> <span class="desc"> Starred </span>  </div>
                 <div :class="isSentSelected" class="btn"  @click="setFilter('isSent')"> <i class="fa-solid fa-paper-plane"></i> <span class="desc">Sent</span>   </div>
                 <!-- <div><i class="fa-solid fa-clock"></i> Snoozed  </div> -->
@@ -14,34 +14,33 @@ export default {
             </div>
        </section>
     `,
-    data(){
-      return{
-        filterType: null,
-      }
+  data() {
+    return {
+      filterType: null,
+    };
+  },
+
+  methods: {
+    setFilter(filterType) {
+      this.filterType = filterType;
+      this.$emit('filtered', filterType);
     },
-
-methods: {
-  setFilter(filterType) {
-    this.filterType = filterType
-      this.$emit('filtered', filterType)
+    compose() {
+      eventBus.emit('compose', true);
+    },
   },
-  compose() {
-    eventBus.emit('compose', true)
-  },
-
-},
   computed: {
-    isInboxSelected(){
-      if (this.filterType === 'all' ) return 'selected-btn-inbox'
+    isInboxSelected() {
+      if (this.filterType === 'all') return 'selected-btn-inbox';
     },
-    isStarSelected(){
-      if (this.filterType === 'isStarred' ) return 'selected-btn'
+    isStarSelected() {
+      if (this.filterType === 'isStarred') return 'selected-btn';
     },
-    isSentSelected(){
-      if (this.filterType === 'isSent' ) return 'selected-btn'
+    isSentSelected() {
+      if (this.filterType === 'isSent') return 'selected-btn';
     },
-    isDeletedSelected(){
-      if (this.filterType === 'isDeleted' ) return 'selected-btn'
+    isDeletedSelected() {
+      if (this.filterType === 'isDeleted') return 'selected-btn';
     },
   },
-}
+};

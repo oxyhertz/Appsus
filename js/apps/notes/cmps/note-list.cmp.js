@@ -14,7 +14,7 @@ export default {
                     </label>
                 </li>
             </ul>
-            <note-actions  v-if="hover" :note="note" @duplicateNote="duplicateNote" @removeNote="removeNote" @togglePin="togglePin" @updateColor="updateColor"/>
+            <note-actions class="note-actions-container" :class="{'show-note-actions': hover}" :note="note" @duplicateNote="duplicateNote" @removeNote="removeNote" @togglePin="togglePin" @updateColor="updateColor"/>
 
         </section>
     `,

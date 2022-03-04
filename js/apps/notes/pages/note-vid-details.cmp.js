@@ -5,7 +5,9 @@ export default {
             <input :style="{'background-color': note.bgColor}"  type="text" class="note-title-input" @input="updateNote" v-model="updatedNote.title" placeholder="Edit Title">
                 <div class="video-container">
                     <iframe class="responsive-iframe" 
-                    :src="embedVidUrl">
+                    :src="embedVidUrl"
+                    frameBorder="0"                   
+                    >
                     </iframe>
                 </div>
                 <label for="">Enter new video url</label>

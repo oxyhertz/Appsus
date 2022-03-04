@@ -9,10 +9,12 @@ export default {
           <h3>{{note.title}}</h3>
             <div class="video-container">
                 <iframe class="responsive-iframe" 
-                :src="embedVidUrl">
+                :src="embedVidUrl"
+                frameBorder="0"
+                >
                 </iframe>
             </div>
-            <note-actions v-if="hover" :note="note" @duplicateNote="duplicateNote" @removeNote="removeNote" @togglePin="togglePin" @updateColor="updateColor"/>
+            <note-actions class="note-actions-container" :class="{'show-note-actions': hover}" :note="note" @duplicateNote="duplicateNote" @removeNote="removeNote" @togglePin="togglePin" @updateColor="updateColor"/>
         </section>
     `,
   components: {

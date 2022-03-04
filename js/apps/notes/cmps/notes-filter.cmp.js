@@ -5,10 +5,14 @@ export default {
                     @input="setFilter" 
                     type="text" 
                     v-model="filterBy.title" 
-                    placeholder="Search by title"
+                    placeholder="Search by title..."
                 />
-                <select v-model="filterBy.type">
-                    <option disabled value="">Type:</option>
+
+              <i class="fa-solid fa-magnifying-glass"></i>
+
+                <select v-model="filterBy.type" @change="setFilter">
+                    <option disabled value="">Type</option>
+                    <option value="">All</option>
                     <option value="noteImg">Image</option>
                     <option value="noteTxt">Text</option>
                     <option value="noteVid">Video</option>

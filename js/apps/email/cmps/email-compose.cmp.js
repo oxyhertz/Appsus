@@ -2,6 +2,7 @@ import { eventBus } from '../../../services/eventBus-service.js'
 import { emailService } from '../services/email-service.js'
 
 export default {
+  props: ['noteEmail'],
   template: `
      <section>
          <div class="email-compose" :class="isOpen">
@@ -31,26 +32,30 @@ export default {
         subject: '',
         body: '',
         isRead: true,
-        sentAt: Date.now() ,
+        sentAt: Date.now(),
         to: '',
         isSent: true,
         isStarred: false,
         isDeleted: false,
-      }
+      },
     }
   },
   created() {
     this.unsubscribe = eventBus.on('compose', this.openModal)
+    if (this.noteEmail.subject) this.openNoteEmail()
   },
   methods: {
-      sendEmail(email){
-        emailService.save(email)
-        .then(res=> {
-          this.isModalOpen = false
-          this.$emit('updateEmails')
-        })
-        
-      },
+    openNoteEmail() {
+      this.isModalOpen = true
+      this.email.subject = this.noteEmail.subject
+      this.email.body = this.noteEmail.body
+    },
+    sendEmail(email) {
+      emailService.save(email).then((res) => {
+        this.isModalOpen = false
+        this.$emit('updateEmails')
+      })
+    },
 
     openModal() {
       this.isModalOpen = true

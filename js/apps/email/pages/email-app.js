@@ -15,7 +15,7 @@ export default {
                   <email-details :email="selectedEmail" />
                   <email-list :emails="emailsToShow"  @close="emailShow = null" @save="saveEmail" />
                   </div>
-                  <email-compose/>
+                  <email-compose :noteEmail="noteEmail"/>
               </section>
           
           `,
@@ -35,9 +35,25 @@ export default {
       filterBy: null,
       show: true,
       unReadEmailsCount: 0,
+      noteEmail: {
+        subject: '',
+        body: '',
+        isRead: true,
+        sentAt: Date.now() ,
+        to: '',
+        isSent: true,
+        isStarred: false,
+        isDeleted: false,
+      }
+
     }
   },
   created() {
+    if (this.$route.query.subject || this.$route.query.body) {
+      this.noteEmail.subject = this.$route.query.subject
+      this.noteEmail.body = this.$route.query.body
+    }
+
     this.unsubscribe = eventBus.on('removeEmail', this.removeEmail)
     this.unsubscribe = eventBus.on('starEmail', this.starEmail)
     this.getEmails()
@@ -129,11 +145,12 @@ export default {
           (email) => email.isRead && !email.isDeleted && !email.isSent
         )
       }
-      if (this.filterBy.ABC) {
-        return this.emails.sort(
-          (email) => !email.isRead && !email.isDeleted && !email.isSent
-        )
-      }
+      // if (this.filterBy.ABC) {
+      //   return this.emails.sort((a, b) => {
+      //     var firstName = a.
+      //     !email.isRead && !email.isDeleted && !email.isSent
+      //   })
+      // }
       if (this.filterBy.subject) {
         const regex = new RegExp(this.filterBy.subject, 'i')
         return this.emails.filter((email) => regex.test(email.subject))

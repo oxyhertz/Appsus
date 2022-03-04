@@ -5,11 +5,18 @@
 
 .preview-email-body {
   flex-grow: 1;
+  margin-left: 5px;
+  color: #979ca0;;
 }
 .sender-name {
+  display: flex;
   margin-inline-start: 1vw;
-  display: inline-block;
   width: 22vw;
+  align-items: center;
+}
+
+.email-subject{
+  display: inline-block
 }
 
 .preview-star {
@@ -33,6 +40,14 @@
   align-items: center;
   width: 9vw;
   margin-inline-end: 4px;
+  opacity: 0;
+}
+
+.preview-container:hover  .actions {
+  opacity: 1;
+}
+.actions:hover {
+  opacity: 1;
 }
 
 .email-preview .preview-content {
@@ -47,3 +62,4 @@
 .preview-content{
   flex: 1;
 }
+

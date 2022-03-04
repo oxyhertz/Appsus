@@ -9,6 +9,7 @@ font-weight: bold;
 
 .email-details-container .email-subject{
 font-size: 21px;
+margin: 0;
 }
 
 .email-details-container .contact-details{
@@ -16,7 +17,7 @@ font-size: 21px;
 }
 .email-details-container{
     width: 67vw;
-    margin: auto;
+    margin-left: 70px;
 }
 
 

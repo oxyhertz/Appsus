@@ -59,14 +59,23 @@ margin-inline-start: 18px;
     font-size: 0.98rem;
   }
 
-  .email-filetr input{
+  .email-choice-list{
+    width: 65px;
+    margin-left: 10px;
+    background-color: #f3f3f3;
+    border: 0;
+    height: 54px;
+    border-radius: 10px;
+  }
+
+  .email-filetr .main-search{
     width: 30vw;
     border: 0;
     height: 54px;
     border-radius: 10px;
     text-align: left;
     background-color: #f3f3f3;
-    background-image: url(bg.jpg);
+    /* background-image: url('../../../../css/imgs/search.svg'); */
     background-repeat: no-repeat;
     text-indent: 20px;
   }
@@ -74,4 +83,5 @@ margin-inline-start: 18px;
   .email-filetr .main-search{
     margin-left: 100px;
   }
+
 

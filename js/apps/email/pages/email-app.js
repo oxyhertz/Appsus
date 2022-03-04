@@ -9,11 +9,11 @@ import emailFilter from '../cmps/email-filter.cmp.js'
 export default {
   template: `
               <section >
-                  <email-filter @filter="setFilter" @updateEmails="getEmails"/>
+                  <email-filter :show="isList" @filter="setFilter" @updateEmails="getEmails"/>
                   <div class="email-app">
                   <folder-list  class="folder-list-main" :count="unReadEmailsCount" @filtered="setFilter"/>
-                  <email-details v-if="!isList" :email="selectedEmail" />
-                  <email-list v-if="isList === true" :emails="emailsToShow"  @close="emailShow = null" @select="saveEmail" />
+                  <email-details v-if="selectedEmail" :email="selectedEmail" @showList="showList"/>
+                  <email-list v-if="isList" :emails="emailsToShow"  @close="emailShow = null" @select="saveEmail" />
                   </div>
                   <email-compose :noteEmail="noteEmail"/>
               </section>
@@ -59,6 +59,10 @@ export default {
     this.getEmails()
   },
   methods: {
+    showList(){
+      this.isList = true
+      this.selectedEmail = null
+    },
     starEmail(id) {
       const currEmail = this.getEmailById(id)
       currEmail.isStarred = !currEmail.isStarred
@@ -98,19 +102,18 @@ export default {
         })
     },
     saveEmail(email) {
-      console.log('this.isList111111111', this.isList)
-      console.log('email', email)
       this.isList = false
-      console.log('this.isList', this.isList)
-      // emailService.save(email).then((email) => {
-      //   this.getEmails()
-        // this.selectedEmail = email
-      // })
+      emailService.save(email).then((email) => {
+        this.getEmails()
+        this.selectedEmail = email
+        console.log('this.selectedEmail', this.selectedEmail)
+      })
     },
     // selectEmail(email) {
     //   this.selectedEmail = email
     // },
     setFilter(filterBy) {
+      this.showList()
       this.filterBy = filterBy
     },
     unReadCount() {

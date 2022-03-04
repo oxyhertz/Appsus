@@ -5,10 +5,13 @@ export default {
   props: ['noteEmail'],
   template: `
      <section>
-         <div class="email-compose" :class="isOpen">
-             <div class="compose-header">
+         <div class="email-compose" :class="isOpen" :class="isModalWide">
+             <div class="compose-header" :class="isModalHeaderWide">
                   <div>New Massage</div>
-                  <div @click="closeModal">x</div>
+                  <div class="compose-actions">
+                  <div  @click="toggleWideModal"><i class="fa-solid fa-up-right-and-down-left-from-center"></i></div>
+                  <div @click="closeModal" class="compose-close">x</div>
+                  </div>
               </div>
                  <form >
                     <div class="compose-inputs"> 
@@ -20,13 +23,14 @@ export default {
                    <div> 
                    <textarea rows="10" cols="40"  v-model="email.body"></textarea>
                    </div>     
-                   <input type="submit" @click="sendEmail(email)">
+                   <button @click="sendEmail(email)"> Send  </button>
                 </form>      
              </div> 
     </section>
       `,
   data() {
     return {
+      isWide :false,
       isModalOpen: false,
       email: {
         subject: '',
@@ -45,6 +49,9 @@ export default {
     if (this.noteEmail.subject) this.openNoteEmail()
   },
   methods: {
+    toggleWideModal(){
+      this.isWide = !this.isWide
+    },
     resetCompose(){
       return  {
         subject: '',
@@ -85,6 +92,12 @@ export default {
     },
   },
   computed: {
+    isModalWide(){
+      if (this.isWide) return 'wide'
+    },
+    isModalHeaderWide(){
+      if (this.isWide) return 'wide-header'
+    },
     isOpen() {
       if (this.isModalOpen) return 'open'
     },

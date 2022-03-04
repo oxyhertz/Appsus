@@ -5,7 +5,7 @@
   min-height: 20px;
   width: 980px;
   margin: 0 0 0 25px;
-  /* margin-left: 25px; */
+  /* width: 800px; */
 }
 
 .email-list:first-child {
@@ -16,5 +16,6 @@
   box-shadow: -7px 9px 15px -11px #000000;
   cursor: pointer;
 }
+
 
 

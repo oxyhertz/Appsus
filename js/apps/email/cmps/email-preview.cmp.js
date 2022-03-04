@@ -8,8 +8,8 @@ export default {
            <i @click.stop="star(email.id)" class="fa-solid fa-star preview-star" :class="isStar"></i>
           <div class="preview-content">
                 <div class="sender-name" :class="isRead">{{Sender}} </div>
-                <div class="email-subjuct" :class="isRead"> {{email.subject}} - </div>
-                <div class="preview-email-body">{{emailTxt}} </div>
+                <div class="email-subject" :class="isRead"> {{email.subject}}  </div>
+                <div class="preview-email-body"> -  {{emailTxt}} </div>
           </div>
            <div class="actions">
                    <i @click.stop="remove(email.id)" class="fa-solid fa-trash-can"></i>
@@ -54,8 +54,8 @@ export default {
       return this.email.to.substring(0, [this.email.to.indexOf('@')])
     },
     emailTxt() {
-      if (this.email.body.length > 80)
-        return this.email.body.substring(0, 50) + '...'
+      if (this.email.body.length > 30)
+        return this.email.body.substring(0, 30) + '...'
       else return this.email.body
     },
     // date() {

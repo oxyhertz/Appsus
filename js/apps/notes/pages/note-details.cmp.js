@@ -21,8 +21,8 @@ export default {
     noteActionsDetails,
   },
   created() {
-    // const id = this.$route.params.noteId;
-    // noteService.get(id).then(note => (this.note = note));
+    const id = this.$route.params.noteId;
+    noteService.get(id).then(note => (this.note = note));
     this.note = this.currNote;
     console.log(this.note);
     console.log('createatea');
@@ -52,12 +52,12 @@ export default {
     },
   },
   watch: {
-    // noteId: {
-    //   handler() {
-    //     this.loadNote();
-    //   },
-    //   immediate: true,
-    // },
+    noteId: {
+      handler() {
+        this.loadNote();
+      },
+      immediate: true,
+    },
   },
   computed: {
     noteId() {

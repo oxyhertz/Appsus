@@ -19,6 +19,10 @@ export default {
                   <i class="fa-solid fa-trash"></i>
                 </div>
 
+                <div @click="sendNote">
+                  <i class="fa-solid fa-paper-plane"></i>
+                </div>
+
         </section>
     `,
   components: {
@@ -39,6 +43,10 @@ export default {
     },
     removeNote() {
       this.$emit('removeNote');
+    },
+    sendNote() {
+      console.log('hi');
+      this.$emit('sendNote');
     },
   },
   computed: {},

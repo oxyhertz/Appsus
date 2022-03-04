@@ -78,7 +78,7 @@ function _createNotes() {
       },
       {
         id: 'n103',
-        type: 'note-list',
+        type: 'noteList',
         title: 'Get my stuff together',
         isPinned: true,
         lastEdit: Date.now(),

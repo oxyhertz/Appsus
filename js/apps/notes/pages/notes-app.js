@@ -39,6 +39,16 @@ export default {
     eventBus.on('openEdit', this.openModal);
     eventBus.on('closeEdit', this.hideModal);
     this.updateNotes();
+    if (this.$route.query.subject || this.$route.query.body) {
+      console.log(this.$route.query.subject);
+      console.log(this.$route.query.body);
+      // this.$router.push('/email');
+    }
+  },
+  watch: {
+    'this.$route'() {
+      console.log('Hoka moka');
+    },
   },
   methods: {
     hideModal() {

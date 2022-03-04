@@ -10,7 +10,7 @@ export default {
                 <section class="notes-list-container" >
   
                   <ul class="notes-list">
-                    <li v-for="note in notes" :key="note.id" class="note-preview-container">
+                    <li v-for="note in notes"  draggable='true' :key="note.id" class="note-preview-container">
                       <component :is="note.type" :note="note" :style="{ 'background-color': note.bgColor }"></component>
                     
                     </li>
@@ -29,6 +29,18 @@ export default {
     return {};
   },
 
-  methods: {},
-  computed: {},
+  methods: {
+    startDrag(evt, item) {
+      evt.dataTransfer.dropEffect = 'move';
+      evt.dataTransfer.effectAllowed = 'move';
+      evt.dataTransfer.setData('itemID', item.id);
+    },
+  },
+  computed: {
+    onDrop(evt, list) {
+      const itemID = evt.dataTransfer.getData('itemID');
+      const item = this.notes.find(item => item.id == itemID);
+      item.list = list;
+    },
+  },
 };

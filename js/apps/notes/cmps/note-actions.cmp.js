@@ -6,24 +6,28 @@ export default {
   template: `
         <section class="note-actions">
            
-               <div class="color-palette" @click="chooseColor = !chooseColor" > 
+               <div class="color-palette" @click="chooseColor = !chooseColor" title="Change note color"> 
                     <i class="fa-solid fa-palette"></i>
                     <color-picker  v-if="chooseColor" @updateColor="updateColor"/>
                 </div>
-                <div @click="togglePin">
+                <div @click="togglePin" class="pinned" title="Pin note">
                   <i v-if="note.isPinned"  class="fa-solid fa-thumbtack"></i>
                   <img v-else src="/css/apps/notes/img/thumbtack.png"  alt="">
                 </div>
 
-                <div @click="removeNote">
+                <div @click="removeNote" title="Remove note">
                   <i class="fa-solid fa-trash"></i>
                 </div>
 
-                <div @click="duplicateNote">
+                <div @click="duplicateNote" title="Duplicate note">
                   <i class="fa-solid fa-clone"></i>
                 </div>
 
-                <div @click="editNote">
+                <div @click="sendNote" title="Send note">
+                  <i class="fa-solid fa-paper-plane"></i>
+                </div>
+
+                <div @click="editNote" title="Edit note">
                    <i class="fa-solid fa-pen-to-square"></i>
                 </div>
         </section>
@@ -55,6 +59,16 @@ export default {
 
       eventBus.emit('openEdit', this.note);
       // this.$router.push(`/notes/${this.note.id}`);
+    },
+    sendNote() {
+      let subject = this.note.title;
+      let body = this.note.info.txt;
+      if (this.note.type === 'noteImg' || this.note.type === 'noteVid')
+        body = this.note.info.url;
+      if (this.note.type === 'noteList') {
+        body = this.note.info.todos.map(todo => todo.txt).join(',');
+      }
+      this.$router.push(`/email?subject=${subject}&body=${body}`);
     },
   },
   computed: {},

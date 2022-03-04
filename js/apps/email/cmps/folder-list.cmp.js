@@ -1,3 +1,4 @@
+import { eventBus } from '../../../services/eventBus-service.js';
 
 export default {
   props: ['count'],
@@ -11,31 +12,33 @@ export default {
             </div>
        </section>
     `,
-    data(){
-      return{
-        filterType: null,
-      }
-    },
-
-methods: {
-  setFilter(filterType) {
-    this.filterType = filterType
-      this.$emit('filtered', filterType)
+  data() {
+    return {
+      filterType: null,
+    };
   },
 
-},
+  methods: {
+    setFilter(filterType) {
+      this.filterType = filterType;
+      this.$emit('filtered', filterType);
+    },
+    compose() {
+      eventBus.emit('compose', true);
+    },
+  },
   computed: {
-    isInboxSelected(){
-      if (this.filterType === 'all' ) return 'selected-btn-inbox'
+    isInboxSelected() {
+      if (this.filterType === 'all') return 'selected-btn-inbox';
     },
-    isStarSelected(){
-      if (this.filterType === 'isStarred' ) return 'selected-btn'
+    isStarSelected() {
+      if (this.filterType === 'isStarred') return 'selected-btn';
     },
-    isSentSelected(){
-      if (this.filterType === 'isSent' ) return 'selected-btn'
+    isSentSelected() {
+      if (this.filterType === 'isSent') return 'selected-btn';
     },
-    isDeletedSelected(){
-      if (this.filterType === 'isDeleted' ) return 'selected-btn'
+    isDeletedSelected() {
+      if (this.filterType === 'isDeleted') return 'selected-btn';
     },
   },
 }

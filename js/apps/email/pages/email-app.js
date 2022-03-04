@@ -11,9 +11,9 @@ export default {
               <section >
                   <email-filter @filter="setFilter" @updateEmails="getEmails"/>
                   <div class="email-app">
-                  <folder-list class="folder-list-main" :count="unReadEmailsCount" @filtered="setFilter"/>
-                  <email-details :email="selectedEmail" />
-                  <email-list :emails="emailsToShow"  @close="emailShow = null" @save="saveEmail" />
+                  <folder-list  class="folder-list-main" :count="unReadEmailsCount" @filtered="setFilter"/>
+                  <email-details v-if="!isList" :email="selectedEmail" />
+                  <email-list v-if="isList === true" :emails="emailsToShow"  @close="emailShow = null" @select="saveEmail" />
                   </div>
                   <email-compose :noteEmail="noteEmail"/>
               </section>
@@ -29,6 +29,7 @@ export default {
   },
   data() {
     return {
+      isList: true,
       emailId: null,
       emails: null,
       selectedEmail: null,
@@ -39,13 +40,12 @@ export default {
         subject: '',
         body: '',
         isRead: true,
-        sentAt: Date.now() ,
+        sentAt: Date.now(),
         to: '',
         isSent: true,
         isStarred: false,
         isDeleted: false,
-      }
-
+      },
     }
   },
   created() {
@@ -98,14 +98,18 @@ export default {
         })
     },
     saveEmail(email) {
-      emailService.save(email).then((email) => {
-        this.getEmails()
-        //   this.emails = [...this.emails]
-      })
+      console.log('this.isList111111111', this.isList)
+      console.log('email', email)
+      this.isList = false
+      console.log('this.isList', this.isList)
+      // emailService.save(email).then((email) => {
+      //   this.getEmails()
+        // this.selectedEmail = email
+      // })
     },
-    selectEmail(email) {
-      this.selectedEmail = email
-    },
+    // selectEmail(email) {
+    //   this.selectedEmail = email
+    // },
     setFilter(filterBy) {
       this.filterBy = filterBy
     },
@@ -121,8 +125,9 @@ export default {
       if (
         !this.filterBy ||
         this.filterBy === 'all' ||
-        this.filterBy.isRead === 'All' 
-      ) {  return this.emails.filter((email) => !email.isSent && !email.isDeleted)
+        this.filterBy.isRead === 'All'
+      ) {
+        return this.emails.filter((email) => !email.isSent && !email.isDeleted)
       }
       if (this.filterBy === 'isSent') {
         return this.emails.filter((email) => email.isSent && !email.isDeleted)
@@ -136,10 +141,14 @@ export default {
         return this.emails.filter((email) => email.isDeleted)
       }
 
-      if (this.filterBy.isRead === 'Unread' || this.filterBy.isRead === 'unread') {
-                    return this.emails.filter(
-            (email) => !email.isRead && !email.isDeleted && !email.isSent
-                    )}
+      if (
+        this.filterBy.isRead === 'Unread' ||
+        this.filterBy.isRead === 'unread'
+      ) {
+        return this.emails.filter(
+          (email) => !email.isRead && !email.isDeleted && !email.isSent
+        )
+      }
       if (this.filterBy.isRead === 'Read' || this.filterBy.isRead === 'read') {
         return this.emails.filter(
           (email) => email.isRead && !email.isDeleted && !email.isSent
@@ -155,9 +164,9 @@ export default {
         const regex = new RegExp(this.filterBy.subject, 'i')
         return this.emails.filter((email) => regex.test(email.subject))
       }
-      if (!this.filterBy.subject && !this.filterBy.isRead ){  
+      if (!this.filterBy.subject && !this.filterBy.isRead) {
         return this.emails.filter((email) => !email.isSent && !email.isDeleted)
-        }
+      }
     },
   },
   watch: {

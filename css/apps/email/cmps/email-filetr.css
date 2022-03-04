@@ -3,11 +3,75 @@
     width: 980px;
     margin: 0 auto;
     margin-left: 16vw;
-    margin-bottom: 5vw;
+    margin-bottom: 0.5vw;
 }
 
 .sort-az{
 font-size: large;
 margin-inline-start: 18px;
 }
+
+.compose {
+    justify-content: space-around;
+    align-items: center;
+    width: 25vw;
+    background-color: white;
+    border-radius: 40px;
+    border-color: #77889914;
+    box-shadow: -10px 5px 7px -10px #919e9d;
+    max-width: 120px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 32px;
+    content: '';
+    display: block;
+    height: 48px;
+    min-width: 56px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    display: flex;
+    color: #5c5b5b;
+    font-weight: bold;
+    display: flex;
+    margin-bottom: 13px;
+    margin-left: -16vw;
+    padding: 26px 78px;
+}
+  
+  .compose:hover {
+    box-shadow: -10px 5px 7px -3px #919e9d;
+    cursor: pointer;
+  }
+  
+  .compose img {
+    width: 60px;
+    padding-right: 12px;
+  }
+  
+  .compose-inputs{
+    height: 38px;
+    margin: 18px;
+    border-bottom: 1px solid rgba(235, 222, 222, 0.863);
+  }
+
+  .compose-txt{
+    padding-right: 18px;
+    font-size: 0.98rem;
+  }
+
+  .email-filetr input{
+    width: 30vw;
+    border: 0;
+    height: 54px;
+    border-radius: 10px;
+    text-align: left;
+    background-color: #f3f3f3;
+    background-image: url(bg.jpg);
+    background-repeat: no-repeat;
+    text-indent: 20px;
+  }
+
+  .email-filetr .main-search{
+    margin-left: 100px;
+  }
 

@@ -24,7 +24,7 @@
 .email-preview .preview-container {
   display: flex;
   /* justify-content: space-between; */
-  height: 33px;
+  height: 40px;
 }
 
 .actions {

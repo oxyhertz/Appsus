@@ -3,8 +3,9 @@ import { emailService } from '../services/email-service.js'
 // import longText from '../cmps/long-text.cmp.js'
 
 export default {
+  props: ['email'],
   template: `
-        <section v-if="email" class="email-details">
+        <section  class="email-details">
             <div class="email-details-container">
               <p class="email-subject"> {{email.subject}} </p>
               <p class="contact-details"> <span class="email-sender">{{sender}}</span>  <span class="email-address"><{{email.to}}></span></p>
@@ -21,14 +22,15 @@ export default {
       email: null,
     }
   },
-  created() {
-    this.getEmail()
+  mounted() {
+    console.log('this.email', this.email)
+    // this.getEmail()
   },
   methods: {
-    getEmail() {
-      const id = this.$route.params.emailId
-      emailService.get(id).then((email) => (this.email = email))
-    },
+    // getEmail() {
+    //   const id = this.$route.params.emailId
+    //   emailService.get(id).then((email) => (this.email = email))
+    // },
   },
     computed: {
       emailId() {

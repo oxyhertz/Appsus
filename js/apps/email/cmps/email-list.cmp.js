@@ -20,11 +20,11 @@ export default {
         },
         select(email) {
             email.isRead = true
-            this.$emit('save',email)
+            this.$emit('select',email)
 
-            this.$router.push({
-                path:`/email/${email.id}`
-            })
+            // this.$router.push({
+            //     path:`/email/${email.id}`
+            // })
         }
     },
     computed: {

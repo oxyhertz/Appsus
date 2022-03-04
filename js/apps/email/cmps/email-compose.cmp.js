@@ -8,7 +8,7 @@ export default {
          <div class="email-compose" :class="isOpen">
              <div class="compose-header">
                   <div>New Massage</div>
-                  <div @click="isModalOpen=false">x</div>
+                  <div @click="closeModal">x</div>
               </div>
                  <form >
                     <div class="compose-inputs"> 
@@ -45,6 +45,25 @@ export default {
     if (this.noteEmail.subject) this.openNoteEmail()
   },
   methods: {
+    resetCompose(){
+      return  {
+        subject: '',
+        body: '',
+        isRead: true,
+        sentAt: Date.now(),
+        to: '',
+        isSent: true,
+        isStarred: false,
+        isDeleted: false,
+      }
+    },
+    closeModal(){
+      this.email = this.resetCompose
+      this.isModalOpen=false
+      this.$router.push({
+        path:`/email`
+    })
+    },
     openNoteEmail() {
       this.isModalOpen = true
       this.email.subject = this.noteEmail.subject
@@ -54,6 +73,10 @@ export default {
       emailService.save(email).then((res) => {
         this.isModalOpen = false
         this.$emit('updateEmails')
+        this.$router.push({
+          path:`/email`
+      })
+      this.email = this.resetCompose
       })
     },
 

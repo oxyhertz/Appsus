@@ -15,6 +15,7 @@ export default {
                    <i @click.stop="remove(email.id)" class="fa-solid fa-trash-can"></i>
                    <i  class="fa-solid fa-envelope-open"></i>
                    <i class="fa-solid fa-clock"></i>
+                   <i @click.stop="sendEmailAsNote(email)" class="fa-solid fa-note-sticky"></i>
                 </div>
          </div>
      </section>
@@ -24,13 +25,17 @@ export default {
   },
   created() {},
   methods: {
-    remove(id){
-      eventBus.emit('removeEmail', id );
+    remove(id) {
+      eventBus.emit('removeEmail', id)
     },
-    star(id){
-      eventBus.emit('starEmail', id );
-    }
-
+    star(id) {
+      eventBus.emit('starEmail', id)
+    },
+    sendEmailAsNote(email) {
+      let subject = email.subject
+      let body = email.body
+      this.$router.push(`/notes?subject=${subject}&body=${body}`)
+    },
   },
   computed: {
     isStar() {
@@ -38,21 +43,24 @@ export default {
       if (this.email.isStarred) return 'isStar'
     },
     isRead() {
-      if (!this.email.isRead) return { read: [this.email.to, this.email.subject] }
+      if (!this.email.isRead)
+        return { read: [this.email.to, this.email.subject] }
     },
     isReadBgc() {
-      if (!this.email.isRead) return { bgc: [this.email.to, this.email.subject] }
+      if (!this.email.isRead)
+        return { bgc: [this.email.to, this.email.subject] }
     },
     Sender() {
       return this.email.to.substring(0, [this.email.to.indexOf('@')])
     },
     emailTxt() {
-      if (this.email.body.length > 80) return this.email.body.substring(0, 50) + '...'
+      if (this.email.body.length > 80)
+        return this.email.body.substring(0, 50) + '...'
       else return this.email.body
     },
     // date() {
-    //     var t = this.email.sentAt 
+    //     var t = this.email.sentAt
     //     return t.toDateString()
     // },
-  }
+  },
 }

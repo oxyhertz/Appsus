@@ -113,6 +113,7 @@ export default {
     //   this.selectedEmail = email
     // },
     setFilter(filterBy) {
+      this.getEmails()
       this.showList()
       this.filterBy = filterBy
     },

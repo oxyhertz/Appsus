@@ -9,7 +9,7 @@ export default {
              <div class="compose-header" :class="isModalHeaderWide">
                   <div>New Massage</div>
                   <div class="compose-actions">
-                  <div  @click="toggleWideModal"><i class="fa-solid fa-up-right-and-down-left-from-center"></i></div>
+                  <div  @click="toggleWideModal"><i class="fa-solid fa-up-right-and-down-left-from-center expand-compose"></i></div>
                   <div @click="closeModal" class="compose-close">x</div>
                   </div>
               </div>

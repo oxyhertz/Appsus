@@ -1,3 +1,7 @@
+/* BASE */
+
+@import './mq.css';
+
 /* CMPS */
 
 @import 'pages/email-app.css';

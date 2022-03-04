@@ -1,10 +1,11 @@
-.email-filetr{
+/* .email-filetr{
     display: flex;
     width: 980px;
     margin: 0 auto;
     margin-left: 16vw;
     margin-bottom: 0.5vw;
-}
+    margin-left: 110px;
+} */
 
 .sort-az{
 font-size: large;
@@ -68,20 +69,6 @@ margin-inline-start: 18px;
     border-radius: 10px;
   }
 
-  .email-filetr .main-search{
-    width: 30vw;
-    border: 0;
-    height: 54px;
-    border-radius: 10px;
-    text-align: left;
-    background-color: #f3f3f3;
-    /* background-image: url('../../../../css/imgs/search.svg'); */
-    background-repeat: no-repeat;
-    text-indent: 20px;
-  }
 
-  .email-filetr .main-search{
-    margin-left: 100px;
-  }
 
 

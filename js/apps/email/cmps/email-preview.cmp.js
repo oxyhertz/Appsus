@@ -5,17 +5,17 @@ export default {
   template: `
      <section class="email-preview" >
        <div class="preview-container" :class="isReadBgc" >
-           <i @click.stop="star(email.id)" class="fa-solid fa-star preview-star" :class="isStar"></i>
+           <i  @click.stop="star(email.id)" class="fa-solid fa-star preview-star" :class="isStar"  class="preview-btn"></i>
           <div class="preview-content">
                 <div class="sender-name" :class="isRead">{{Sender}} </div>
                 <div class="email-subject" :class="isRead"> {{email.subject}}  </div>
                 <div class="preview-email-body"> -  {{emailTxt}} </div>
           </div>
            <div class="actions">
-                   <i @click.stop="remove(email.id)" class="fa-solid fa-trash-can"></i>
-                   <i  class="fa-solid fa-envelope-open"></i>
-                   <i class="fa-solid fa-clock"></i>
-                   <i @click.stop="sendEmailAsNote(email)" class="fa-solid fa-note-sticky"></i>
+                   <i @click.stop="remove(email.id)" class="fa-solid fa-trash-can" class="preview-btn"></i>
+                   <i  class="fa-solid fa-envelope-open" class="preview-btn"></i>
+                   <i class="fa-solid fa-clock" class="preview-btn"></i>
+                   <i @click.stop="sendEmailAsNote(email)" class="fa-solid fa-note-sticky" class="preview-btn"></i>
                 </div>
          </div>
      </section>
@@ -38,8 +38,9 @@ export default {
     },
   },
   computed: {
+
     isStar() {
-      if (this.email.isDeleted) return
+      if (this.email.isDeleted) return 'dont-show'
       if (this.email.isStarred) return 'isStar'
     },
     isRead() {

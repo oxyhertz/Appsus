@@ -10,9 +10,9 @@ export default {
   props: ['note'],
   template: `
         <section class="note-modal-container" :style="{'background-color': note.bgColor}">
-            <component :is="note.type" :note="note"></component>
-            <p>Last Edited {{lastEditTime}}</p>
-            <note-actions-details @updateColor="updateColor" @sendNote="sendNote" @removeNote="removeNote" />
+            <component @updateNote="updateNote"  :is="note.type"  :note="note"></component>
+            <p class="last-edit-text">Last Edited {{lastEditTime}}</p>
+            <note-actions-details @updateNote="updateNote" @updateColor="updateColor" @sendNote="sendNote" @removeNote="removeNote" />
         </section>
     `,
   components: {
@@ -38,14 +38,22 @@ export default {
       this.$router.push(`/email?subject=${subject}&body=${body}`);
     },
     updateNote(updatedNote) {
-      this.note = updatedNote;
+      // this.note = updatedNote;
       this.note.lastEdit = Date.now();
       noteService.update(this.note);
+      eventBus.emit('show-msg', {
+        txt: 'Note has been updated',
+        type: 'success',
+      });
     },
     updateColor(color) {
       this.note.bgColor = color;
       this.note.lastEdit = Date.now();
       noteService.update(this.note);
+      eventBus.emit('show-msg', {
+        txt: 'Note color has been changed',
+        type: 'success',
+      });
     },
     removeNote() {
       const id = this.note.id;
@@ -53,13 +61,19 @@ export default {
         this.note.lastEdit = Date.now();
         this.$emit('removeNote');
         eventBus.emit('updateNotes');
+        eventBus.emit('show-msg', {
+          txt: 'Note has been deleted',
+          type: 'success',
+        });
       });
     },
   },
   computed: {
     lastEditTime() {
       var date = new Date(this.note.lastEdit);
-      date = `${date.getDate()}/${date.getMonth() + 1} ${date.getHours()}:${
+      date = `${date.getDate()}/${
+        date.getMonth() + 1
+      }/${date.getFullYear()} ${date.getHours()}:${
         date.getMinutes() < 10 ? `0` + date.getMinutes() : date.getMinutes()
       }`;
       return date;

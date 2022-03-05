@@ -16,6 +16,7 @@ export default {
   },
   methods: {
     showMsg(msg) {
+      console.log('hollla');
       this.msg = msg;
       setTimeout(() => {
         this.msg = null;

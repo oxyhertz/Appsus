@@ -35,4 +35,8 @@
   .notes-add-container {
     width: 370px;
   }
+  .circles {
+    overflow-y: hidden;
+    /* top: 115px; */
+  }
 }

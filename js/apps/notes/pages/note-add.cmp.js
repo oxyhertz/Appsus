@@ -61,6 +61,7 @@ export default {
       }
       noteService.save(this.note).then(() => {
         eventBus.emit('updateNotes');
+        eventBus.emit('show-msg', { txt: 'Note Added', type: 'success' });
       });
       this.title = '';
     },

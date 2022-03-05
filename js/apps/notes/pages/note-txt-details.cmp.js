@@ -17,6 +17,7 @@ export default {
   },
   methods: {
     updateNote() {
+      console.log('hi');
       this.$emit('updateNote', this.updatedNote);
     },
   },

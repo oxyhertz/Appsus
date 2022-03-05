@@ -42,6 +42,10 @@ export default {
         .update(this.currNote)
         .then(() => {
           eventBus.emit('updateNotes');
+          eventBus.emit('show-msg', {
+            txt: 'Note color has been changed',
+            type: 'success',
+          });
         })
         .catch(() => {
           console.log('Color Error');
@@ -57,10 +61,15 @@ export default {
       const id = this.currNote.id;
       noteService.remove(id).then(() => {
         eventBus.emit('updateNotes');
+        eventBus.emit('show-msg', {
+          txt: 'Note has been removed',
+          type: 'success',
+        });
       });
     },
     duplicateNote() {
       noteService.save(this.currNote).then(() => eventBus.emit('updateNotes'));
+      eventBus.emit('show-msg', { txt: 'Note Duplicated', type: 'success' });
     },
   },
 };

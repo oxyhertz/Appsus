@@ -42,12 +42,18 @@ export default {
     },
     updateColor(color) {
       this.note.bgColor = color;
+      console.log('holla');
+      eventBus.emit('show-msg', { txt: 'Note Color Changed', type: 'success' });
       noteService.update(this.note);
     },
     removeNote() {
       const id = this.note.id;
       noteService.remove(id).then(() => {
         this.$router.push('/notes');
+        eventBus.emit('show-msg', {
+          txt: 'Note has been removed',
+          type: 'success',
+        });
       });
     },
   },

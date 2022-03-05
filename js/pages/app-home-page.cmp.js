@@ -1,7 +1,8 @@
 export default {
   template: `
             <section class="home-page-container">
-      
+
+
             <ul class="circles">
                     <li></li>
                     <li></li>
@@ -16,7 +17,7 @@ export default {
             </ul>
                 <div class="logo">
                   <img  src="../../css/imgs/black-horse-head-logo-templates-2.png" alt="">
-                  <!-- <h1>Appsus</h1> -->
+                  <h2>Appsus</h2>
                   
                 </div>
                 <div>
@@ -31,21 +32,23 @@ export default {
                 </div>
 
                 <div class="home-page-nav">
-
+                    <div class="white-screen-container">
+                    </div>
                     <div>
                       <router-link @click="toggleNav" to="/email"><i class="fa-solid fa-envelope"></i></router-link> 
-                      <p>Email</p>
+                      <!-- <p>Email</p> -->
                     </div>
                     <div>
                       <router-link @click="toggleNav" to="/notes"><i class="fa-solid fa-note-sticky"></i></router-link>
-                      <p>Notes</p>
+                      <!-- <p>Notes</p> -->
                     </div>  
                     <div>
                         <router-link to="/book"><i class="fa-solid fa-book"></i></router-link>
-                        <p>Books</p>
+                        <!-- <p>Books</p> -->
                     </div>
                 </div> 
             </section>
+
         
         `,
 };

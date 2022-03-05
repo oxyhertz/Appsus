@@ -23,7 +23,7 @@ export default {
                       <p>Notes</p>
                     </div>  
                     <div>
-                        <router-link to="/book"><i class="fa-solid fa-book"></i></router-link>
+                        <router-link  @click="toggleNav" to="/book"><i class="fa-solid fa-book"></i></router-link>
                         <p>Books</p>
                     </div>
                    </div>

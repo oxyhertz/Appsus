@@ -17,11 +17,23 @@
   font-family: 'Gugi';
   gap: 1em;
   margin-bottom: 5em;
+  letter-spacing: 10px;
 }
 
 .home-page-container .logo img {
   width: 100px;
   height: 100px;
+}
+
+.white-screen-container {
+  width: 100vw;
+  height: 79px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: white;
+  /* z-index: 999; */
+  opacity: 1 !important;
 }
 
 .home-page-container h1 {
@@ -44,6 +56,7 @@
 
 .home-page-container .message {
   background-color: yellow;
+
   color: #333;
   display: block;
   font-weight: 900;
@@ -59,27 +72,51 @@
   margin-top: 2em;
   z-index: 10;
   display: flex;
-  gap: 55px;
-  font-size: 1.3em;
+  /* gap: 110px; */
+  justify-content: space-between;
+  align-items: center;
+  height: 150px;
+  width: 330px;
+  text-shadow: 0px 0px 3px rgba(150, 150, 150, 1);
 }
 
 .home-page-nav > * {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   opacity: 0.75;
   transition: font-size 0.3s;
+  font-size: 2.5em;
 }
+
 .home-page-nav > *:hover {
   opacity: 1;
-  font-size: 1.5em;
+  font-size: 3.5em;
+  text-shadow: 0px 0px 10px rgba(150, 150, 150, 1);
 }
 
 .word1,
 .word2,
 .word3 {
   font-family: tahoma;
+}
+
+@keyframes color {
+  0% {
+    background: #33cccc;
+  }
+  20% {
+    background: #33cc36;
+  }
+  40% {
+    background: #b8cc33;
+  }
+  60% {
+    background: #fcca00;
+  }
+  80% {
+    background: #33cc36;
+  }
+  100% {
+    background: #33cccc;
+  }
 }
 
 @keyframes openclose {
@@ -91,11 +128,11 @@
     width: 0;
   }
   15% {
-    width: 230px;
+    width: 170px;
   }
   30% {
     top: 0.2rem;
-    width: 230px;
+    width: 170px;
   }
   33% {
     top: 0.2rem;
@@ -110,11 +147,11 @@
   }
   48% {
     top: -4.5rem;
-    width: 190px;
+    width: 170px;
   }
   62% {
     top: -4.5rem;
-    width: 190px;
+    width: 170px;
   }
   66% {
     top: -4.5rem;
@@ -128,11 +165,11 @@
   }
   86% {
     top: -9rem;
-    width: 230px;
+    width: 170px;
   }
   95% {
     top: -9rem;
-    width: 230px;
+    width: 170px;
   }
   98% {
     top: -9rem;
@@ -161,7 +198,7 @@
   list-style: none;
   width: 20px;
   height: 20px;
-  background: rgba(148, 145, 145, 0.335);
+  background: rgba(137, 135, 138, 0.335);
   animation: animate 25s linear infinite;
   bottom: -150px;
 }

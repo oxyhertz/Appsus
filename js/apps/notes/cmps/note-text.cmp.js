@@ -27,6 +27,10 @@ export default {
     updateColor(color) {
       this.currNote.bgColor = color;
       noteService.update(this.currNote);
+      eventBus.emit('show-msg', {
+        txt: 'Note color has been changed',
+        type: 'success',
+      });
     },
     togglePin() {
       this.currNote.isPinned = !this.currNote.isPinned;
@@ -37,9 +41,14 @@ export default {
     removeNote() {
       const id = this.currNote.id;
       noteService.remove(id).then(() => eventBus.emit('updateNotes'));
+      eventBus.emit('show-msg', {
+        txt: 'Note has been removed',
+        type: 'success',
+      });
     },
     duplicateNote() {
       noteService.save(this.currNote).then(() => eventBus.emit('updateNotes'));
+      eventBus.emit('show-msg', { txt: 'Note Duplicated', type: 'success' });
     },
   },
 };

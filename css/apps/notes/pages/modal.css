@@ -23,3 +23,7 @@
   pointer-events: auto;
   opacity: 1;
 }
+
+.last-edit-text {
+  font-size: 0.625rem;
+}

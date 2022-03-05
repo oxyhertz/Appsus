@@ -46,8 +46,9 @@ ul {
 .reviews-container li {
   background-color: antiquewhite;
   border-bottom: 3px solid #ff8aae;
-  margin: 0 auto 5px;
-  width: 60%;
+  width: 300px;
+  text-align: center;
+  word-break: break-all;
 }
 .book-preview-container {
   text-align: center;
@@ -82,14 +83,14 @@ ul {
   background-color: rgb(0, 0, 0);
 }
 
-.logo h1 {
+/* .logo h1 {
   font-family: Lobster;
   font-size: 3.5rem;
   color: #fff89a;
   text-shadow: 3px 1px #444040;
-}
+} */
 
-.app-header {
+/* .app-header {
   background-color: #ff8aae;
   padding: 1rem;
   box-shadow: 0px 2px 13px 0px #a39e9e;
@@ -109,21 +110,21 @@ ul {
   text-align: center;
   color: white;
   height: 5vh;
-}
+} */
 
-.book-app {
+/* .book-app {
   padding-top: 4.5rem;
   min-height: 90vh;
-}
+} */
 
-.book-details {
+/* .book-details {
   min-height: 90vh;
   text-align: center;
-}
+} */
 
-.img-container {
+/* .img-container {
   background-color: black;
-}
+} */
 
 .book-filter {
   display: flex;
@@ -152,8 +153,10 @@ ul {
   justify-content: space-between;
 }
 
-button,
-.button {
+.book-app button,
+.book-app .button,
+.book-details button,
+.book-details .button {
   cursor: pointer;
   font-family: 'Poppins';
   font-weight: bold;
@@ -170,8 +173,10 @@ button,
   width: 150px;
 }
 
-button:hover,
-.button:hover {
+.book-app button:hover,
+.book-app .button:hover,
+.book-details button,
+.book-details .button {
   box-shadow: inset 1px 3px 13px 0px #ff8aae;
 }
 
@@ -234,6 +239,10 @@ button:hover,
 
 .reviews-container {
   margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .book-details img {
@@ -263,7 +272,7 @@ button:hover,
   background-color: lightgreen;
 }
 
-textarea {
+.book-app textarea {
   resize: none;
 }
 .user-msg {
@@ -356,21 +365,44 @@ textarea {
   background-color: rgba(98, 98, 98, 0.15);
 }
 .searched-books {
-  position: absolute;
-  width: 50%;
+  width: 100%;
   z-index: 20;
   background-color: #fff;
+  position: absolute;
+  padding-right: 50px;
 }
 
 .searched-books li button {
   background-color: rgba(255, 255, 255, 0.623);
   width: 50px;
   font-size: 2em;
-  padding: 0;
 }
 
 .book-list img,
 .book-details img {
   width: 300px;
   height: 407px;
+}
+
+.book-search-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1em;
+  flex-direction: column;
+  align-items: center;
+}
+
+.books-pagination {
+  text-align: center;
+  margin-top: 2em;
+}
+
+@media (max-width: 710px) {
+  .book-details-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .book-details-content {
+    width: 100%;
+  }
 }

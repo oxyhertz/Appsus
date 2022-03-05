@@ -46,7 +46,6 @@ export default {
     },
     setFilter(filterBy) {
       this.filterBy = filterBy;
-      console.log('hi');
     },
     updateNotes() {
       noteService.query().then(notes => {
@@ -76,7 +75,6 @@ export default {
         });
       } else {
         return this.notes.filter(note => {
-          console.log(note);
           return regex.test(note.title);
         });
       }

@@ -4,11 +4,11 @@ import { eventBus } from '../../../services/eventBus-service.js';
 export default {
   props: ['note'],
   template: `
-        <section class="note-actions">
+        <section class="note-actions" @mouseover="palette = true" @mouseleave="palette = false">
            
-               <div class="color-palette" @click="chooseColor = !chooseColor" title="Change note color"> 
+               <div class="color-palette"  @click="chooseColor = !chooseColor" title="Change note color"> 
                     <i class="fa-solid fa-palette"></i>
-                    <color-picker  v-if="chooseColor" @updateColor="updateColor"/>
+                    <color-picker v-if="palette" v-if="chooseColor" @updateColor="updateColor"/>
                 </div>
                 <div @click="togglePin" class="pinned" title="Pin note">
                   <i v-if="note.isPinned"  class="fa-solid fa-thumbtack"></i>
@@ -39,6 +39,7 @@ export default {
   data() {
     return {
       chooseColor: false,
+      palette: false,
     };
   },
   methods: {

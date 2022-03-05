@@ -83,6 +83,10 @@ export default {
         this.$router.push({
           path:`/email`
       })
+      eventBus.emit('show-msg', {
+        txt: 'Email Sent',
+        type: 'success',
+      });
       this.email = this.resetCompose
       })
     },

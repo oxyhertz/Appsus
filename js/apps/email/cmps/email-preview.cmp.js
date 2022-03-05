@@ -21,20 +21,26 @@ export default {
          </div>
      </section>
     `,
-  data() {
-    return {}
-  },
-  created() {},
+
   methods: {
     save(email) {
       email.isRead = !email.isRead
       eventBus.emit('save', email)
+      
     },
     remove(id) {
       eventBus.emit('removeEmail', id)
+      eventBus.emit('show-msg', {
+        txt: 'Email Removed',
+        type: 'success',
+      });
     },
     star(id) {
       eventBus.emit('starEmail', id)
+      eventBus.emit('show-msg', {
+        txt: 'Email Starred',
+        type: 'success',
+      });
     },
     sendEmailAsNote(email) {
       let subject = email.subject
@@ -76,9 +82,5 @@ export default {
         return this.email.body.substring(0, 30) + '...'
       else return this.email.body
     },
-    // date() {
-    //     var t = this.email.sentAt
-    //     return t.toDateString()
-    // },
   },
 }

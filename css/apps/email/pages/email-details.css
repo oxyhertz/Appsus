@@ -42,3 +42,14 @@
 .email-details{
     z-index: 5;
 }
+
+.actions-details{
+  opacity: 1;
+  margin-left: 50vw;
+  gap: 15px;
+  display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 9vw;
+
+}

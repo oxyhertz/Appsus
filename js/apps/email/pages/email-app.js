@@ -94,12 +94,9 @@ export default {
         .then(() => {
           const idx = this.emails.findIndex((email) => email.id === id)
           this.emails.splice(idx, 1)
-          //   this.emails = [...this.emails]
-          // eventBus.emit('show-msg', { txt: 'Deleted succesfully', type: 'success' });
         })
         .catch((err) => {
           console.error(err)
-          // eventBus.emit('show-msg', { txt: 'Error - please try again later', type: 'error' });
         })
     },
     saveSelectedEmail(email) {
@@ -114,9 +111,6 @@ export default {
         this.getEmails()
       })
     },
-    // selectEmail(email) {
-    //   this.selectedEmail = email
-    // },
     setFilter(filterBy) {
       this.getEmails()
       this.showList()
@@ -189,14 +183,6 @@ export default {
       if (!this.filterBy.subject && !this.filterBy.isRead) {
         return this.emails.filter((email) => !email.isSent && !email.isDeleted)
       }
-    },
-  },
-  watch: {
-    emails: {
-      handler() {
-        // this.unReadCount()
-      },
-      immediate: true,
     },
   },
 }

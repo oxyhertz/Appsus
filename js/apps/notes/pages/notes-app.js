@@ -35,9 +35,9 @@ export default {
     };
   },
   created() {
-    eventBus.on('updateNotes', this.updateNotes);
-    eventBus.on('openEdit', this.openModal);
-    eventBus.on('closeEdit', this.hideModal);
+    this.unsubscribe = eventBus.on('updateNotes', this.updateNotes);
+    this.unsubscribe1 = eventBus.on('openEdit', this.openModal);
+    this.unsubscribe2 = eventBus.on('closeEdit', this.hideModal);
     this.updateNotes();
   },
   methods: {
@@ -94,5 +94,10 @@ export default {
         });
       }
     },
+  },
+  unmounted() {
+    this.unsubscribe();
+    this.unsubscribe1();
+    this.unsubscribe2();
   },
 };

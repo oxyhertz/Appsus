@@ -21,6 +21,10 @@ export default {
                     <div class="note-list-icon" @click="setType('noteList')" :class="{'active-type-add': active === 'list'}">
                         <i class="fa-regular fa-square-check"></i>
                     </div>
+                    
+                     <div @click="openCanvas">
+                         <i class="fa-solid fa-brush"></i>
+                    </div>   
                     <div @click="onSaveNote" class="add-note-btn">
                         <i class="fa-solid fa-plus"></i>
                     </div>
@@ -48,6 +52,17 @@ export default {
     };
   },
   methods: {
+    openCanvas() {
+      var canvasNote = noteService.getEmptyNote();
+      canvasNote.type = 'noteCanvas';
+      canvasNote.title = 'Canvas';
+      canvasNote.info.canvas = 'd';
+      noteService.save(canvasNote).then(() => {
+        eventBus.emit('updateNotes');
+        eventBus.emit('show-msg', { txt: 'Note Added', type: 'success' });
+      });
+      eventBus.emit('openEdit', canvasNote);
+    },
     onSaveNote() {
       if (!this.title) return;
       if (this.note.type === 'noteImg' || this.note.type === 'noteVid')

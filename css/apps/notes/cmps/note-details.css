@@ -33,6 +33,10 @@ textarea {
   gap: 1em;
 }
 
+.note-img-details img {
+  max-height: 600px;
+}
+
 .todo-input {
   border: none;
   font-family: poppins;

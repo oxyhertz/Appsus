@@ -18,5 +18,5 @@
   transition: bottom 0.5s;
   border-left: 7px solid green;
   background-color: whitesmoke;
-  z-index: 20;
+  z-index: 25;
 }

@@ -4,6 +4,7 @@ import noteTxt from './note-txt-details.cmp.js';
 import noteImg from './note-img-details.cmp.js';
 import noteVid from './note-vid-details.cmp.js';
 import noteList from './note-list-details.cmp.js';
+import noteCanvas from './note-canvas-details.cmp.js';
 import noteActionsDetails from '../cmps/note-actions-details.cmp.js';
 
 export default {
@@ -20,6 +21,7 @@ export default {
     noteImg,
     noteVid,
     noteList,
+    noteCanvas,
     noteActionsDetails,
   },
   created() {},

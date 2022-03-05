@@ -8,13 +8,14 @@ export default {
         <section class="note note-canvas" @mouseleave="hover = false" @mouseover="hover = true">
           <h3>{{note.title}}</h3>
             
-              <div class="canvas-container" > 
+              <div class="canvas-container" v-if="!note.info.canvas"> 
                 <canvas ref="canvas" id="canvas" @mousemove="draw" @mouseup="finishPosition" @mousedown="startPosition">
 
                 </canvas>
               </div>
+              <img v-else :src="note.info.canvas" alt="">
             </div>
-            <!-- <note-actions class="note-actions-container" :class="{'show-note-actions': hover}" :note="note" @duplicateNote="duplicateNote" @removeNote="removeNote" @togglePin="togglePin" @updateColor="updateColor"/> -->
+            <note-actions class="note-actions-container" :class="{'show-note-actions': hover}" :note="note" @duplicateNote="duplicateNote" @removeNote="removeNote" @togglePin="togglePin" @updateColor="updateColor"/>
         </section>
     `,
   components: {
@@ -32,6 +33,8 @@ export default {
     };
   },
   mounted() {
+    console.log(this.note.info.canvas);
+    if (!this.$refs.canvas) return;
     var canvas = this.$refs.canvas;
     var ctx = canvas.getContext('2d');
     this.vueCanvas = ctx;
@@ -54,6 +57,8 @@ export default {
       console.log('stas');
       this.painting = false;
       this.vueCanvas.beginPath();
+      this.currNote.info.canvas = this.$refs.canvas.toDataURL();
+      console.log(this.currNote.info.canvas);
       noteService.update(this.currNote);
     },
     updateColor(color) {

@@ -2,6 +2,14 @@
     min-width: 10vw;
 }
 
+.hide-on-mobile{
+background-color: white;
+width: 90vw;
+height: 70vh;
+position: absolute;
+left: 71px;
+}
+
 .email-app .side-nav-bar {
     width: 10vw;
     display: flex;

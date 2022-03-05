@@ -21,7 +21,7 @@ export default {
                      Subject<input type="text"  v-model="email.subject">
                    </div>            
                    <div> 
-                   <textarea rows="10" cols="40"  v-model="email.body"></textarea>
+                   <textarea rows="10" cols="40"  v-model="email.body" class="compose-body"></textarea>
                    </div>     
                    <button @click="sendEmail(email)"> Send  </button>
                 </form>      

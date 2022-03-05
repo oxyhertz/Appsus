@@ -11,7 +11,7 @@ export default {
               <p class="contact-details"> <span class="email-sender">{{sender}}</span>  <span class="email-address"><{{email.to}}></span></p>
               <p class="email-txt"> {{email.body}} </p>
             </div>
-         <button @click="this.$emit('showList')">Return </button>
+         <button @click="this.$emit('showList')" class="details-return-btn">Return </button>
          <!-- <router-link to="/email">Return</router-link>  -->
        </section>
     `,

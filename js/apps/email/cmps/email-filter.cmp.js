@@ -1,18 +1,18 @@
 import { eventBus } from '../../../services/eventBus-service.js'
 
 export default {
-    props:['show'],
-    template: `
+  props: ['show'],
+  template: `
         <section class="email-filetr">
             <button @click="compose"class="compose"> 
                 <img src="../../../../css/imgs/compose.jpg"> 
                 <span class="compose-txt"> Compose </span>
             </button>
 
-            <div v-if="show">      
+            <div :class="showSearch">      
                   <input @input="setFilter" type="text" v-model="filterBy.subject" placeholder="Search Your Email.." class="main-search">
             </div>
-            <div v-if="show">    
+            <div :class="showSearch">    
             <select v-model="filterBy.isRead" @change="setFilter" class="email-choice-list">
                     <option disabled value="" selected>Type</option>
                     <option value="All">All</option>
@@ -21,27 +21,42 @@ export default {
                 </select>
                
             </div >
-                <label v-if="show">
-                 <i class="fa-solid fa-arrow-down-a-z sort-az"></i>
-                 <input type="checkBox" name="sort" style="display:none" v-model="filterBy.ABC">
+                <label :class="showSearch">
+                 <i @click="filterBy.abc = !filterBy.abc"class="fa-solid fa-arrow-down-a-z sort-az"></i>
                 </label>
-        </section>
+                <i @click="filterBy.date = !filterBy.date" class="fa-regular fa-calendar sort-date" :class="showSearch"></i>
+            </section>
     `,
-    data() {
-        return {
-            filterBy: {
-                subject: null,
-                ABC: null,
-                isRead: ''
-            }
-        };
-    },
-    methods: {
-        compose() {
-            eventBus.emit('compose', true)
-          },
-        setFilter() {
-            this.$emit('filter', this.filterBy);
-        }
+  data() {
+    return {
+      filterBy: {
+        subject: null,
+        abc: false,
+        isRead: '',
+        date: false,
+      },
     }
+  },
+  methods: {
+    compose() {
+      eventBus.emit('compose', true)
+    },
+    setFilter() {
+      console.log('this.filterBy', this.filterBy)
+      this.$emit('filter', this.filterBy)
+    },
+  },
+  computed: {
+    showSearch() {
+      if (!this.show) return 'hide-search'
+    },
+  },
+  watch: {
+    filterBy: {
+      handler() {
+        this.setFilter()
+      },
+      immediate: true,
+    },
+  },
 }

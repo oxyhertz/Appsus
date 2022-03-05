@@ -68,6 +68,9 @@
 .preview-container:hover .actions {
   opacity: 1;
 }
+.preview-container:hover .preview-date {
+  opacity: 0;
+}
 .actions:hover {
   opacity: 1;
 }

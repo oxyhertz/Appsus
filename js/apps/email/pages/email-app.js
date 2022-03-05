@@ -13,7 +13,7 @@ export default {
                   <div class="email-app">
                   <folder-list  class="folder-list-main" :count="unReadEmailsCount" @filtered="setFilter"/>
                   <email-details v-if="selectedEmail" :email="selectedEmail" @showList="showList"/>
-                  <email-list v-if="isList" :emails="emailsToShow"  @close="emailShow = null" @select="saveEmail" />
+                  <email-list v-if="isList" :emails="emailsToShow"  @close="emailShow = null" @select="saveSelectedEmail" />
                   </div>
                   <email-compose :noteEmail="noteEmail"/>
               </section>
@@ -54,6 +54,7 @@ export default {
       this.noteEmail.body = this.$route.query.body
     }
 
+    this.unsubscribe = eventBus.on('save', this.saveEmail)
     this.unsubscribe = eventBus.on('removeEmail', this.removeEmail)
     this.unsubscribe = eventBus.on('starEmail', this.starEmail)
     this.getEmails()
@@ -101,12 +102,16 @@ export default {
           // eventBus.emit('show-msg', { txt: 'Error - please try again later', type: 'error' });
         })
     },
-    saveEmail(email) {
+    saveSelectedEmail(email) {
       this.isList = false
       emailService.save(email).then((email) => {
         this.getEmails()
         this.selectedEmail = email
-        console.log('this.selectedEmail', this.selectedEmail)
+      })
+    },
+    saveEmail(email) {
+      emailService.save(email).then((email) => {
+        this.getEmails()
       })
     },
     // selectEmail(email) {
@@ -158,6 +163,14 @@ export default {
           (email) => email.isRead && !email.isDeleted && !email.isSent
         )
       }
+      if (this.filterBy.date) {
+        const inboxEmails = this.emails.filter(
+          (email) => !email.isSent && !email.isDeleted
+        )
+        return inboxEmails.sort((a, b) => {
+          return new Date(b.sentAt) - new Date(a.sentAt)
+        })
+      }
       if (this.filterBy.abc) {
         const inboxEmails = this.emails.filter(
           (email) => !email.isSent && !email.isDeleted
@@ -167,15 +180,6 @@ export default {
           var secondName = b.to
           if (firstName > secondName) return 1
           else return -1
-        })
-      }
-      if (this.filterBy.date) {
-        debugger
-        const inboxEmails = this.emails.filter(
-          (email) => !email.isSent && !email.isDeleted
-        )
-        return inboxEmails.sort((a, b) => {
-          return new Date(b.sentAt)- new Date(a.sentAt)
         })
       }
       if (this.filterBy.subject) {

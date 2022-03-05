@@ -13,8 +13,8 @@ export default {
           </div>
                 <div class="actions">
                    <i @click.stop="remove(email.id)" class="fa-solid fa-trash-can" class="preview-btn"></i>
-                   <i  v-if="email.isRead" class="fa-solid fa-envelope-open" class="preview-btn"></i>
-                   <i  v-else class="fa-solid fa-envelope" class="preview-btn"></i>
+                   <i  v-if="email.isRead" class="fa-solid fa-envelope-open" class="preview-btn" @click.stop="save(email)"></i>
+                   <i  v-else class="fa-solid fa-envelope" class="preview-btn" @click.stop="save(email)"></i>
                    <i class="fa-solid fa-clock" class="preview-btn"></i>
                    <i @click.stop="sendEmailAsNote(email)" class="fa-solid fa-note-sticky" class="preview-btn"></i>
                 </div>
@@ -26,6 +26,10 @@ export default {
   },
   created() {},
   methods: {
+    save(email) {
+      email.isRead = !email.isRead
+      eventBus.emit('save', email)
+    },
     remove(id) {
       eventBus.emit('removeEmail', id)
     },

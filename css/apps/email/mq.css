@@ -63,6 +63,7 @@
     height: 50px;
   }
   .emails-list {
+    font-size: 10px;
     position: absolute;
     left: 69px;
   }
@@ -99,12 +100,13 @@
     background-repeat: no-repeat;
     text-indent: 20px;
   }
-  body {
-    font-size: 10px;
-  }
+
 }
 
 @media (min-width: 800px) {
+.side-nav-bar{
+  margin-left: -30px;
+}
   .details-return-btn {
     position: relative;
     top: -16.5vh;

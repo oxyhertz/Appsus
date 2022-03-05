@@ -5,6 +5,7 @@ export default {
   template: `
         <section>
             <div class="side-nav-bar">
+              <div class="hide-on-mobile"></div>
                 <div :class="isInboxSelected"class="btn" @click="setFilter('all')"><i class="fa-solid fa-inbox"></i> <span class="desc">Inbox {{count}}</span></div>
                 <div :class="isStarSelected" class="btn"  @click="setFilter('isStarred')"><i class="fa-solid fa-star "></i> <span class="desc"> Starred </span></div>
                 <div :class="isSentSelected" class="btn"  @click="setFilter('isSent')"> <i class="fa-solid fa-paper-plane"></i> <span class="desc">Sent</span></div>

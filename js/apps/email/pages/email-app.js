@@ -59,7 +59,7 @@ export default {
     this.getEmails()
   },
   methods: {
-    showList(){
+    showList() {
       this.isList = true
       this.selectedEmail = null
     },
@@ -158,12 +158,26 @@ export default {
           (email) => email.isRead && !email.isDeleted && !email.isSent
         )
       }
-      // if (this.filterBy.ABC) {
-      //   return this.emails.sort((a, b) => {
-      //     var firstName = a.
-      //     !email.isRead && !email.isDeleted && !email.isSent
-      //   })
-      // }
+      if (this.filterBy.abc) {
+        const inboxEmails = this.emails.filter(
+          (email) => !email.isSent && !email.isDeleted
+        )
+        return inboxEmails.sort((a, b) => {
+          var firstName = a.to
+          var secondName = b.to
+          if (firstName > secondName) return 1
+          else return -1
+        })
+      }
+      if (this.filterBy.date) {
+        debugger
+        const inboxEmails = this.emails.filter(
+          (email) => !email.isSent && !email.isDeleted
+        )
+        return inboxEmails.sort((a, b) => {
+          return new Date(b.sentAt)- new Date(a.sentAt)
+        })
+      }
       if (this.filterBy.subject) {
         const regex = new RegExp(this.filterBy.subject, 'i')
         return this.emails.filter((email) => regex.test(email.subject))

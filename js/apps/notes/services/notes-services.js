@@ -101,6 +101,17 @@ function _createNotes() {
         },
         bgColor: '#bdea8a',
       },
+      {
+        id: 'n104',
+        title: 'Canvas',
+        type: 'noteCanvas',
+        isPinned: false,
+        lastEdit: Date.now(),
+        info: {
+          url: ``,
+        },
+        bgColor: '#bdea8a',
+      },
     ];
     utilService.saveToStorage(NOTES_KEY, notes);
   }

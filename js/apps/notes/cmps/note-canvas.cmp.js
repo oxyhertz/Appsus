@@ -8,13 +8,13 @@ export default {
         <section class="note note-canvas" @mouseleave="hover = false" @mouseover="hover = true">
           <h3>{{note.title}}</h3>
             
-              <div class="canvas-container">
-                <canvas id="canvas ">
+              <div class="canvas-container" > 
+                <canvas ref="canvas" id="canvas" @mousemove="draw" @mouseup="finishPosition" @mousedown="startPosition">
 
                 </canvas>
               </div>
             </div>
-            <note-actions class="note-actions-container" :class="{'show-note-actions': hover}" :note="note" @duplicateNote="duplicateNote" @removeNote="removeNote" @togglePin="togglePin" @updateColor="updateColor"/>
+            <!-- <note-actions class="note-actions-container" :class="{'show-note-actions': hover}" :note="note" @duplicateNote="duplicateNote" @removeNote="removeNote" @togglePin="togglePin" @updateColor="updateColor"/> -->
         </section>
     `,
   components: {
@@ -27,9 +27,35 @@ export default {
     return {
       currNote: null,
       hover: false,
+      vueCanvas: null,
+      painting: false,
     };
   },
+  mounted() {
+    var canvas = this.$refs.canvas;
+    var ctx = canvas.getContext('2d');
+    this.vueCanvas = ctx;
+  },
   methods: {
+    draw(ev) {
+      if (!this.painting) return;
+      this.vueCanvas.lineWidth = 2;
+      this.vueCanvas.lineCap = 'round';
+      this.vueCanvas.lineTo(ev.offsetX, ev.offsetY);
+      this.vueCanvas.stroke();
+      this.vueCanvas.beginPath();
+      this.vueCanvas.moveTo(ev.offsetX, ev.offsetY);
+    },
+    startPosition() {
+      console.log('hola');
+      this.painting = true;
+    },
+    finishPosition() {
+      console.log('stas');
+      this.painting = false;
+      this.vueCanvas.beginPath();
+      noteService.update(this.currNote);
+    },
     updateColor(color) {
       this.currNote.bgColor = color;
       noteService.update(this.currNote);

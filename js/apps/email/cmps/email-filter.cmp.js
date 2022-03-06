@@ -1,11 +1,11 @@
-import { eventBus } from '../../../services/eventBus-service.js'
+import { eventBus } from '../../../services/eventBus-service.js';
 
 export default {
   props: ['show'],
   template: `
         <section class="email-filetr">
             <button @click="compose"class="compose"> 
-                <img src="../../../../css/imgs/compose.jpg"> 
+                <img src="./../../../../css/imgs/compose.jpg"> 
                 <span class="compose-txt"> Compose </span>
             </button>
 
@@ -35,28 +35,28 @@ export default {
         isRead: '',
         date: false,
       },
-    }
+    };
   },
   methods: {
     compose() {
-      eventBus.emit('compose', true)
+      eventBus.emit('compose', true);
     },
     setFilter() {
-      console.log('this.filterBy', this.filterBy)
-      this.$emit('filter', this.filterBy)
+      console.log('this.filterBy', this.filterBy);
+      this.$emit('filter', this.filterBy);
     },
   },
   computed: {
     showSearch() {
-      if (!this.show) return 'hide-search'
+      if (!this.show) return 'hide-search';
     },
   },
   watch: {
     filterBy: {
       handler() {
-        this.setFilter()
+        this.setFilter();
       },
       immediate: true,
     },
   },
-}
+};

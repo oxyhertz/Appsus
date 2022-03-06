@@ -8,24 +8,24 @@ export default {
 
                 <input :placeholder="placeholder"  v-model="title" type="text"  @keyup.enter="onSaveNote">
                 <div class="note-types-add">
-                    <div @click="setType('noteTxt')" :class="{'active-type-add': active === 'text'}">
+                    <div title="Text" @click="setType('noteTxt')" :class="{'active-type-add': active === 'text'}">
                     <i class="fa-solid fa-square-pen"></i>
                     <i class="fa-regular fa-text"></i>
                     </div>
-                    <div @click="setType('noteImg')" :class="{'active-type-add': active === 'image'}">
+                    <div title="Image" @click="setType('noteImg')" :class="{'active-type-add': active === 'image'}">
                    <i class="fa-regular fa-image"></i>
                     </div>
-                    <div @click="setType('noteVid')" :class="{'active-type-add': active === 'video'}">
+                    <div title="Video" @click="setType('noteVid')" :class="{'active-type-add': active === 'video'}">
                     <i class="fa-brands fa-youtube-square"></i>
                     </div>
-                    <div class="note-list-icon" @click="setType('noteList')" :class="{'active-type-add': active === 'list'}">
+                    <div title="Todo list" class="note-list-icon" @click="setType('noteList')" :class="{'active-type-add': active === 'list'}">
                         <i class="fa-regular fa-square-check"></i>
                     </div>
                     
-                     <div @click="openCanvas">
+                     <div @click="openCanvas" title="Create canvas">
                          <i class="fa-solid fa-brush"></i>
                     </div>   
-                    <div @click="onSaveNote" class="add-note-btn">
+                    <div @click="onSaveNote" class="add-note-btn" title="Add note">
                         <i class="fa-solid fa-plus"></i>
                     </div>
                 </div>

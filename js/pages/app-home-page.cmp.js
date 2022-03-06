@@ -16,7 +16,7 @@ export default {
                     <li></li>
             </ul>
                 <div class="logo">
-                  <img  src="./../../css/imgs/black-horse-head-logo-templates-2.png" alt="">
+                  <img  src="https://i.ibb.co/zJWLhKj/black-horse-head-logo-templates-2.png" alt="">
                   <h2>Appsus</h2>
                   
                 </div>

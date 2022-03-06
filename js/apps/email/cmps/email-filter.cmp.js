@@ -5,7 +5,7 @@ export default {
   template: `
         <section class="email-filetr">
             <button @click="compose"class="compose"> 
-                <img src="./../../../../css/imgs/compose.jpg"> 
+                <img src="https://i.ibb.co/q0XbHkf/compose.png"> 
                 <span class="compose-txt"> Compose </span>
             </button>
 

@@ -24,9 +24,14 @@ export default {
     noteCanvas,
     noteActionsDetails,
   },
-  created() {},
+  created() {
+    this.currNote = this.note;
+    // console.log(this.currNote);
+  },
   data() {
-    return {};
+    return {
+      currNote: null,
+    };
   },
   methods: {
     sendNote() {
@@ -42,7 +47,7 @@ export default {
     },
     updateNote(updatedNote) {
       // this.note = updatedNote;
-      this.note.lastEdit = Date.now();
+      this.currNote.lastEdit = Date.now();
       noteService.update(this.note);
       eventBus.emit('show-msg', {
         txt: 'Note has been updated',
@@ -50,9 +55,9 @@ export default {
       });
     },
     updateColor(color) {
-      this.note.bgColor = color;
-      this.note.lastEdit = Date.now();
-      noteService.update(this.note);
+      this.currNote.bgColor = color;
+      this.currNote.lastEdit = Date.now();
+      noteService.update(this.currNote);
       eventBus.emit('show-msg', {
         txt: 'Note color has been changed',
         type: 'success',

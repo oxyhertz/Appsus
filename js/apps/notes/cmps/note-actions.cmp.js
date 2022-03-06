@@ -69,6 +69,7 @@ export default {
       if (this.note.type === 'noteList') {
         body = this.note.info.todos.map(todo => todo.txt).join(',');
       }
+      if (this.note.type === 'noteCanvas') body = this.note.info.canvas;
       this.$router.push(`/email?subject=${subject}&body=${body}`);
     },
   },

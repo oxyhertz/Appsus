@@ -2,12 +2,12 @@ export default {
   template: `
           <header class="app-header">
               <div class="logo">
-                  <img src="../../css/imgs/black-horse-head-logo-templates-2.png" alt="">
+                  <img src="./../../css/imgs/black-horse-head-logo-templates-2.png" alt="">
                   <h1>Appsus</h1>
                 </div>
                 <nav class="nav-bar">
                     <div class='nav-btn' @click="toggleNav">
-                      <img src="../../css/imgs/grid-icon.png"  alt="">
+                      <img src="./../../css/imgs/grid-icon.png"  alt="">
                   </div>
                   <div class="nav-container" :class="showNavClass">
                     <div>

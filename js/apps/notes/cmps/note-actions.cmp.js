@@ -12,7 +12,7 @@ export default {
                 </div>
                 <div @click="togglePin" class="pinned" title="Pin note">
                   <i v-if="note.isPinned"  class="fa-solid fa-thumbtack"></i>
-                  <img v-else src="/css/apps/notes/img/thumbtack.png"  alt="">
+                  <img v-else src="./css/apps/notes/img/thumbtack.png"  alt="">
                 </div>
 
                 <div @click="removeNote" title="Remove note">
